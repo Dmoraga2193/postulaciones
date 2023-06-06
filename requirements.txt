@@ -4,3 +4,7 @@ pillow
 django-crispy-forms
 crispy-bootstrap5
 django-rest-framework
+django-phonenumber-field
+django-filter
+django-phonenumbers
+whitenoise
