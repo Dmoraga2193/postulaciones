@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>
+        {% block titulo %}
+        {% endblock %}
+    </title>
+    <!--------------------------------------------------------------------
+    ---------------------------HEADER-----------------------------------
+    -------------------------------------------------------------------->
+    <div class="container-fluid">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+
+            <!-- Brand Logo -->
+            <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
+
+            <!-- Button for Collapsible Navbar -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" id="inicio" href="{% url 'home' %}">INICIO<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="#">EMPRESA</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="#">CONTACTO</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
+                    </li>
+                    {% if perms.app.view_postulacion %}
+                    <li class=" nav-item mr-3">
+                            <a class="nav-link" href="{% url 'listar_postulaciones' %}"">LISTAR POSTULACIONES</a>
+                    </li>   
+                    {% endif %}
+                    {% if user.is_authenticated %}      
+                    <li class=" nav-item mr-3">
+                                <a class="nav-link" href="{% url 'logout' %}">CERRAR SESIÓN</a>
+                    </li>
+                    <li class=" nav-item mr-3">
+                        <a class="nav-link" href="{% url 'login' %}">Bienvenido @{{ user.username }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+</head>
+
+<body>
+
+    {% block contenido %}
+    {% endblock %}
+</body>
+
+<!--------------------------------------------------------------------
+---------------------------FOOTER-----------------------------------
+-------------------------------------------------------------------->
+
+<footer class=" pt-5 pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+                <img id="logo-footer" src="{% static 'app/img/logo.png' %}" alt="">
+                </a>
+            </div>
+            <div class="col">
+                <p>Arteplástica es una empresa chilena dedicada a la producción y comercialización de materias primas
+                    para la
+                    industria del plástico (F.R.P). La empresa tiene cobertura nacional, la cual se materializa en
+                    Santiago y
+                    regiones.</p>
+            </div>
+            <div class="col">
+                <h2>Contáctanos</h2>
+                <div>
+                    <a href=""><i aria-hidden="true" class="fas fa-map-marker-alt mr-2"></i> Portugal 1230 - Santiago
+                        Centro</a>
+                </div>
+
+                <div>
+                    <a href=""><i aria-hidden="true" class="fas fa-mail-bulk mr-2"></i> ventas@arteplastica.cl</a>
+                </div>
+                <div class="contact-info mt-3">
+                    <i aria-hidden="true" class="fas fa-phone-alt"></i>
+                    <div class="contact-text">
+                        <p>2 2544 2617 - 2 2551 2912</p>
+                        <p>2 2544 3015</p>
+                    </div>
+                </div>
+                <h2>Síguenos</h2>
+                <div class="social-media mt-4">
+                    <a href="">
+                        <i class="fab fa-facebook ml-3"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-instagram ml-4"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- Sweet Alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% if messages %}
+{% for m in messages %}
+<script>
+    Swal.fire({
+        "title": "Felicitaciones",
+        "text": "{{m}}",
+        "icon": "success"
+    })
+</script>
+{% endfor %}
+{% endif %}
+<!-- Sweet Alert-->
+<script src="{% static 'app/js/script.js' %}"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
+    <link rel="stylesheet" href="{% static 'app/css/login.css' %}">
+    <title>Registro de usuario</title>
+</head>
+
+<body>
+    {% load crispy_forms_tags %}
+    <div class="wrapper gradient-border" style="max-width: 550px;">
+        <div class="logo">
+            <img src="{% static 'app/img/logo-aplastica.png' %}" alt="">
+        </div>
+        <div class="text-center mt-4 name">
+            Arte Plastica
+        </div>
+        <form class="p-3 mt-3" action="" method="post">
+            {% csrf_token %}
+            {{ form | crispy}}
+            <input type="submit" value="Registrarse" class="btn mt-3"></input>
+        </form>
+        <div class="text-center mt-4">
+            <a href="{% url 'home' %}">ir al home</a> |
+            <a href="{% url 'login' %}">ingresar</a>
+        </div>
+    </div>
+</body>
+
+</html>

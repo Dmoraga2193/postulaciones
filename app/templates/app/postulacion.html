@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+
+
+{% block titulo %}
+Postulación
+{% endblock %}
+{% block contenido %}
+{% load static %}
+{% load crispy_forms_tags %}
+<br>
+<br>
+<div class="row">
+  <div class="col-12 col-md-6 offset-md-3">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <form action="" class="" method="POST" enctype="multipart/form-data">
+
+          {% csrf_token %}
+
+          {{ form | crispy }}
+          <div class="d-flex justify-content-end">
+            <input type="reset" value="Cancelar" class="btn btn-danger"></input>
+            &nbsp;
+            <button type="submit" id="btnEnviar" class="btn btn-success">Enviar</button>
+          </div>
+        </form>
+        {{mensaje}}
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+{% endblock %}

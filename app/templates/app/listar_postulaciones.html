@@ -1,0 +1,160 @@
+{% extends 'app/base.html' %}
+
+{% block titulo %}
+Listar Postulaciones
+{% endblock %}
+
+{% block contenido %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<script>
+    function eliminarPostulacion(id) {
+        Swal.fire({
+            "title": "¿Seguro que desea eliminarlo?",
+            "text": "Esta acción no se puede deshacer",
+            "icon": "question",
+            "showCancelButton": true,
+            "cancelButtonText": "No",
+            "confirmButtonText": "Si",
+            "reverseButtons": true,
+            "confirmButtonColor": "#dc3545"
+        })
+            .then(function (result) {
+                if (result.isConfirmed) {
+                    window.location.href = "/eliminar-postulacion/" + id + "/"
+                }
+            })
+    }
+</script>
+
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="container-sm-9 container-fluid">
+            <div class="card">
+                <div class="card-body">
+
+                    <h1 class="text-center">Listado de Postulaciones</h1>
+                    <hr>
+
+                    <table class="table table-striped table-hover table-responsive-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido Paterno</th>
+                                <th>Celular</th>
+                                <th>Comuna</th>
+                                <th>Experiencia</th>
+                                <th>Cargo</th>
+                                <th>Disponibilidad Inmediata</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+
+                        {% for p in postulaciones %}
+
+                        <tr>
+                            <td>{{ p.nombre | title }}</td>
+                            <td>{{ p.ap_paterno | title}}</td>
+                            <td>{{ p.celular | title}}</td>
+                            <td>
+                                {% if p.comuna == 0 %}
+                                Santiago
+                                {% elif p.comuna == 1 %}
+                                Providencia
+                                {% elif p.comuna == 2 %}
+                                Las Condes
+                                {% elif p.comuna == 3 %}
+                                La Florida
+                                {% elif p.comuna == 4 %}
+                                Ñuñoa
+                                {% elif p.comuna == 5 %}
+                                Vitacura
+                                {% elif p.comuna == 6 %}
+                                Maipú
+                                {% elif p.comuna == 7 %}
+                                Puente Alto
+                                {% elif p.comuna == 8 %}
+                                La Reina
+                                {% elif p.comuna == 9 %}
+                                Peñalolén
+                                {% elif p.comuna == 10 %}
+                                Macul
+                                {% elif p.comuna == 11 %}
+                                San Joaquín
+                                {% elif p.comuna == 12 %}
+                                La Cisterna
+                                {% elif p.comuna == 13 %}
+                                Independencia
+                                {% elif p.comuna == 14 %}
+                                Cerrillos
+                                {% elif p.comuna == 15 %}
+                                Renca
+                                {% elif p.comuna == 16 %}
+                                Quinta Normal
+                                {% elif p.comuna == 17 %}
+                                Lo Prado
+                                {% elif p.comuna == 18 %}
+                                Pudahuel
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if p.experiencia == 0 %}
+                                De 0 a 2 años
+                                {% elif p.experiencia == 1 %}
+                                De 3 a 5 años
+                                {% elif p.experiencia == 2 %}
+                                De 6 a 8 años
+                                {% elif p.experiencia == 3 %}
+                                Sobre 9 años
+                                {% endif %}
+                            </td>
+                            <td>{{ p.cargo | title}}</td>
+                            <td>
+                                {% if p.disponibilidad %}
+                                Si
+                                {% else %}
+                                No
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'leer_postulacion' p.id %}" class="btn btn-success">Revisar</a>
+                                <a href="#" onclick="eliminarPostulacion({{ p.id }})"
+                                    class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+                    </table>
+                    <div>
+                        {% include 'app/paginator.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="container-sm-3 container-fluid">
+
+            <div class="card card-body">
+                <h2>Filtro de busqueda</h2>
+                <hr>
+                <form method="get">
+                    {{filtro.form | crispy}}
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+
+{% endblock %}

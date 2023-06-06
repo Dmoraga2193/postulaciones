@@ -1,0 +1,175 @@
+.navbar-brand {
+  margin-left: 20rem;
+  width: 15%;
+}
+
+body {
+  font-family: "BLAIR ITC STD", Sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* 
+    .nav-link:hover {
+    text-decoration: underline;
+    text-decoration-color: #E40414;
+    color: #E40414 !important
+    }; 
+}*/
+
+
+
+body {
+  color: #7E7E7E;
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 4px;
+  background-color: #E40414;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #E40414 !important;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+#inicio {
+  color: #E40414 !important;
+}
+
+#inicio::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3.5px;
+  transform: scaleX(1);
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  transition: all 0.3s ease;
+}
+
+.navbar.smaller {
+  height: 4rem;
+  /* Adjust the height as needed */
+}
+
+.logo.smaller {
+  max-height: 4rem;
+  /* Adjust the max height as needed */
+  width: auto;
+}
+
+footer {
+  background-image: url("https://www.arteplastica.cl/wp-content/uploads/2022/01/fondotitular-min.png");
+  color: white;
+  text-align: justify;
+  font-family: "AVENIR -BOOK", Sans-serif;
+}
+
+#logo-footer {
+  width: 20rem;
+}
+
+footer p {
+  color: #EDE6E6;
+  font-size: 100%;
+}
+
+footer h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+footer i {
+  font-size: 1.2rem;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+}
+
+.contact-info i {
+  margin-right: 1rem;
+  /* Adjust the spacing as needed */
+
+}
+
+.contact-info .contact-text {
+  font-weight: 900;
+
+}
+
+.social-media i {
+  font-size: 24px;
+  /* Initial size of the icons */
+  transition: transform 0.3s ease;
+  /* Smooth transition with 0.3s duration */
+}
+
+.social-media i:hover {
+  animation: pulse 1s infinite;
+  /* Start the pulse animation on hover */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    /* Initial size */
+  }
+
+  50% {
+    transform: scale(1.2);
+    /* Increased size */
+  }
+
+  100% {
+    transform: scale(1);
+    /* Return to initial size */
+  }
+}
+
+a {
+  color: inherit;
+  /* Inherit the text color from the parent */
+  text-decoration: none;
+  /* Remove underline */
+}
+
+a:hover {
+  color: white;
+  /* Set the desired color on hover */
+  text-decoration: none;
+  /* Remove underline on hover */
+}
