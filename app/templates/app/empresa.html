@@ -10,7 +10,7 @@
 <!--------------------------------------------------------------------
 ---------------------------HEADER-----------------------------------
 -------------------------------------------------------------------->
-<div class="container-fluid">
+<div class="container-fluid ">
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
         <!-- Brand Logo -->
@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'home' %}">INICIO<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'home' %}">INICIO</a>
                 </li>
                 <li class="nav-item mr-3">
                     <a class="nav-link" id="inicio" href="{% url 'empresa' %}">EMPRESA</a>
@@ -54,51 +54,66 @@
         </div>
     </nav>
 
-    <div class="first-section pb-3"
-        style="background-image: url(https://www.arteplastica.cl/wp-content/uploads/2022/01/fondotitular-min.png);">
-        <div class="contenido-1era-seccion text-white">
-            <h1 id="titulo">Quienes somos</h1>
-        </div>
-    </div>
+    <div class="page-banner overlay-dark bg-image"
+        style="background-image: url(https://www.arteplastica.cl/wp-content/uploads/2022/01/footerBackground.png);">
+        <div class="banner-section">
+            <div class="container text-center wow fadeInUp">
+                <h1 class="text-danger display-2"><strong>Quienes somos</strong></h1>
+            </div> <!-- .container -->
+        </div> <!-- .banner-section -->
+    </div> <!-- .page-banner -->
+    <div class="page-section">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 wow fadeInUp">
+                    <h1 class="text-center mb-3 text-light">Nuestro motor principal es la excelencia</h1>
+                    <div class="text-lg text-light">
+                        <p>Somos una empresa chilena especializada exclusivamente en la importación y
+                            comercialización
+                            para la industria del plástico reforzado con fibra de vidrio (F.R.P)
 
-    <div class="second-section text-white">
-        <img id="img-left" src="{% static 'app/img/empresaeditadoo.png' %} " alt="">
-        <img id="img-right" src="{% static 'app/img/fondo-min-1.png' %} " alt="">
-        <div class="bloque-negro">
-            <div class="row">
-                <div class="col">
-                    <h2 class="text-right mb-4 mr-5">NUESTRO MOTOR PRINCIPAL ES LA EXCELENCIA</h2>
+                            Nuestro motor principal es la excelencia, de manera que nuestros clientes puedan sentir
+                            confianza y seguridad de realizar sus proyectos, obteniendo así los mejores resultados.
+
+                            Con cobertura a nivel nacional, entregamos nuestros servicios a Santiago y regiones.
+                        </p>
+                        <p>En Arteplástica nos preocupamos por las pequeñas y medianas empresas de nuestro país, por
+                            lo
+                            que además de ofrecer nuestros productos de calidad, ofrecemos ensayos en laboratorio,
+                            asesorías técnicas, tanto para grupos abiertos como para grupos cerrados, además cursos
+                            para
+                            certificación de obras.
+
+                            Apoyamos a nuestros clientes en el desarrollo de nuevos productos y aplicaciones en
+                            general.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p class="mr-5 ml-5">
-                        Somos una empresa chilena especializada exclusivamente en la importación y comercialización para
-                        la industria del plástico reforzado con fibra de vidrio (F.R.P) <br> <br>
+                <div class="col-lg-8 mt-6">
+                    <h1 class="text-center mb-5 wow fadeInUp text-light">Socios y distribuidores de</h1>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-5 ">
+                            <div class="card-transparent">
+                                <div class="bg-image">
+                                    <img src="{% static 'app/img/BASF-Logo_bw.svg-1024x512.png' %}" class="w-100" />
 
-                        Nuestro motor principal es la excelencia, de manera que nuestros clientes puedan sentir
-                        confianza y seguridad de realizar sus proyectos, obteniendo así los mejores resultados. <br>
-                        <br>
 
-                        Con cobertura a nivel nacional, entregamos nuestros servicios a Santiago y regiones.
-                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="card-transparent">
+                                <div class="bg-image">
+                                    <img src="{% static 'app/img/almaco.png' %}" class="w-90" />
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="col">
-                    <p class="mr-5">
-                        En Arteplástica nos preocupamos por las pequeñas y medianas empresas de nuestro país, por lo que
-                        además de ofrecer nuestros productos de calidad, ofrecemos ensayos en laboratorio, asesorías
-                        técnicas, tanto para grupos abiertos como para grupos cerrados, además cursos para certificación
-                        de obras.<br><br>
-
-                        Apoyamos a nuestros clientes en el desarrollo de nuevos productos y aplicaciones en general.
-                    </p>
-                </div>
-            </div>
-            <h4 class="text-center">SOCIOS Y DISTRIBUIDORES DE </h4>
-            <div class="logos text-center">
-                <img class="mr-5 img-hover" id="basf-logo" src="{% static 'app/img/BASF-Logo_bw.svg-1024x512.png' %} "
-                    alt="">
-                <img class="ml-2 img-hover" id="almaco-logo" src="{% static 'app/img/almaco.png' %} " alt="">
             </div>
         </div>
     </div>

@@ -48,7 +48,7 @@ Lista de postulaciones
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item mr-3">
-                        <a class="nav-link" href="{% url 'home' %}">INICIO<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'home' %}">INICIO</a>
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link" href="{% url 'empresa' %}">EMPRESA</a>
@@ -175,9 +175,9 @@ Lista de postulaciones
                                 {% endif %}
                             </td>
                             <td>
-                                <a href="{% url 'leer_postulacion' p.id %}" class="btn btn-success">Revisar</a>
+                                <a href="{% url 'leer_postulacion' p.id %}" class="btn btn-success btn-sm">Revisar</a>
                                 <a href="#" onclick="eliminarPostulacion({{ p.id }})"
-                                    class="btn btn-danger">Eliminar</a>
+                                    class="btn btn-danger btn-sm">Eliminar</a>
                             </td>
                         </tr>
 

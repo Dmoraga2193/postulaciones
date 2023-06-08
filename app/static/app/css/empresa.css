@@ -12,13 +12,14 @@ body {
   font-family: "BLAIR ITC STD", Sans-serif;
   font-size: 15px;
   font-weight: 400;
-}
+} */
 
 
 
 body {
   color: #7E7E7E;
-} */
+  background-image: url('/static/app/img/footerBackground.png');
+}
 
 .nav-link {
   position: relative;
