@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 
 {% block titulo %}
-Listar Postulaciones
+Lista de postulaciones
 {% endblock %}
 
 {% block contenido %}
@@ -28,6 +28,63 @@ Listar Postulaciones
     }
 </script>
 
+<!--------------------------------------------------------------------
+---------------------------HEADER-----------------------------------
+-------------------------------------------------------------------->
+
+<head>
+    <div class="container-fluid">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+
+            <!-- Brand Logo -->
+            <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
+
+            <!-- Button for Collapsible Navbar -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'home' %}">INICIO<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="#">EMPRESA</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="#">CONTACTO</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
+                </li>
+                {% if perms.app.view_postulacion %}
+                <li class=" nav-item mr-3">
+                            <a class="nav-link" id="inicio" href="{% url 'listar_postulaciones' %}"">LISTAR POSTULACIONES</a>
+                </li>   
+                {% endif %}
+                {% if user.is_authenticated %}      
+                <li class=" nav-item mr-3">
+                                <a class="nav-link" href="{% url 'logout' %}">CERRAR SESIÓN</a>
+                    </li>
+                    <li class=" nav-item mr-3">
+                        <a class="nav-link" href="{% url 'login' %}">Bienvenido @{{ user.username }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+</head>
+<!--------------------------------------------------------------------
+ ---------------------------HEADER-----------------------------------
+ -------------------------------------------------------------------->
+
 <br>
 <br>
 <br>
@@ -37,7 +94,7 @@ Listar Postulaciones
             <div class="card">
                 <div class="card-body">
 
-                    <h1 class="text-center">Listado de Postulaciones</h1>
+                    <h1 class="text-center text-muted">Listado de Postulaciones</h1>
                     <hr>
 
                     <table class="table table-striped table-hover table-responsive-sm">
@@ -114,10 +171,10 @@ Listar Postulaciones
                             </td>
                             <td>{{ p.cargo | title}}</td>
                             <td>
-                                {% if p.disponibilidad %}
-                                Si
-                                {% else %}
+                                {% if p.disponibilidad == 0 %}
                                 No
+                                {% elif p.disponibilidad == 1 %}
+                                Si
                                 {% endif %}
                             </td>
                             <td>
@@ -152,9 +209,4 @@ Listar Postulaciones
         </div>
     </div>
 </div>
-
-<br>
-<br>
-<br>
-
 {% endblock %}

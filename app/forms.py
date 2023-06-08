@@ -9,7 +9,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class PostulacionForm(forms.ModelForm):
 
     email = forms.EmailField(max_length=50,help_text="Ejemplo: arteplastica@dominio.cl")
-    cv = forms.FileField(required=False, validators=[MaxSizeFileValidators(max_file_size=5)],help_text="Adjunte su Curriculum(Opcional): Archivos compatibles (PDF,DOC,DOCX) con un tamaño maximo de 5MB")
+    cv = forms.FileField(required=False, validators=[MaxSizeFileValidators(max_file_size=5)],help_text="Adjunte su Currículum Vitae(Opcional): Archivos compatibles (PDF,DOC,DOCX) con un tamaño máximo de 5MB")
     celular = PhoneNumberField()
     
     def clean_email(self):
@@ -26,7 +26,7 @@ class PostulacionForm(forms.ModelForm):
         existe = Postulacion.objects.filter(celular__iexact=celular).exists()
 
         if existe:
-            raise ValidationError("Ya existe Postulacion con este Celular.")
+            raise ValidationError("Ya existe Postulación con este Celular.")
         
         return celular
 
