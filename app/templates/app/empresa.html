@@ -1,0 +1,108 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/empresa.css' %}">
+{% endblock %}
+{% block contenido %}
+
+<!--------------------------------------------------------------------
+---------------------------HEADER-----------------------------------
+-------------------------------------------------------------------->
+<div class="container-fluid">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+
+        <!-- Brand Logo -->
+        <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
+
+        <!-- Button for Collapsible Navbar -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'home' %}">INICIO<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" id="inicio" href="{% url 'empresa' %}">EMPRESA</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
+                </li>
+                {% if perms.app.view_postulacion %}
+                <li class=" nav-item mr-3">
+                        <a class="nav-link" href="{% url 'listar_postulaciones' %}"">LISTAR POSTULACIONES</a>
+                </li>   
+                {% endif %}
+                {% if user.is_authenticated %}      
+                <li class=" nav-item mr-3">
+                            <a class="nav-link" href="{% url 'logout' %}">CERRAR SESIÓN</a>
+                </li>
+                <li class=" nav-item mr-3">
+                    <a class="nav-link" href="{% url 'login' %}">Bienvenido @{{ user.username }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="first-section pb-3"
+        style="background-image: url(https://www.arteplastica.cl/wp-content/uploads/2022/01/fondotitular-min.png);">
+        <div class="contenido-1era-seccion text-white">
+            <h1 id="titulo">Quienes somos</h1>
+        </div>
+    </div>
+
+    <div class="second-section text-white">
+        <img id="img-left" src="{% static 'app/img/empresaeditadoo.png' %} " alt="">
+        <img id="img-right" src="{% static 'app/img/fondo-min-1.png' %} " alt="">
+        <div class="bloque-negro">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-right mb-4 mr-5">NUESTRO MOTOR PRINCIPAL ES LA EXCELENCIA</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="mr-5 ml-5">
+                        Somos una empresa chilena especializada exclusivamente en la importación y comercialización para
+                        la industria del plástico reforzado con fibra de vidrio (F.R.P) <br> <br>
+
+                        Nuestro motor principal es la excelencia, de manera que nuestros clientes puedan sentir
+                        confianza y seguridad de realizar sus proyectos, obteniendo así los mejores resultados. <br>
+                        <br>
+
+                        Con cobertura a nivel nacional, entregamos nuestros servicios a Santiago y regiones.
+                    </p>
+                </div>
+                <div class="col">
+                    <p class="mr-5">
+                        En Arteplástica nos preocupamos por las pequeñas y medianas empresas de nuestro país, por lo que
+                        además de ofrecer nuestros productos de calidad, ofrecemos ensayos en laboratorio, asesorías
+                        técnicas, tanto para grupos abiertos como para grupos cerrados, además cursos para certificación
+                        de obras.<br><br>
+
+                        Apoyamos a nuestros clientes en el desarrollo de nuevos productos y aplicaciones en general.
+                    </p>
+                </div>
+            </div>
+            <h4 class="text-center">SOCIOS Y DISTRIBUIDORES DE </h4>
+            <div class="logos text-center">
+                <img class="mr-5 img-hover" id="basf-logo" src="{% static 'app/img/BASF-Logo_bw.svg-1024x512.png' %} "
+                    alt="">
+                <img class="ml-2 img-hover" id="almaco-logo" src="{% static 'app/img/almaco.png' %} " alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

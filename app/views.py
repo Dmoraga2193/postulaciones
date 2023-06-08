@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import permission_required
+from django.contrib.admin.views.decorators import staff_member_required
 from .filters import FiltroPostulacion
 from django.db.models.query_utils import Q
 
@@ -13,6 +14,9 @@ from django.db.models.query_utils import Q
 
 def home(request):    
     return render(request, 'app/home.html')
+
+def empresa(request): 
+    return render(request, 'app/empresa.html')
 
 def postulacion(request):
     data = {
@@ -75,7 +79,7 @@ def eliminar_postulacion(request, id):
     messages.success(request,'Postulacion Eliminada Correctamente')
     return redirect(to="listar_postulaciones")
 
-@login_required
+@staff_member_required
 def registro(request):
 
     data = {

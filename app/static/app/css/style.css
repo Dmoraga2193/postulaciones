@@ -1,335 +1,335 @@
-   @font-face {
-     font-family: 'Blair ITC Std';
-     src: url('/arte/Blair-ITC-Std.otf') format('opentype');
-   }
+@font-face {
+  font-family: 'Blair ITC Std';
+  src: url('/static/app/css/Blair-ITC-Std.otf') format('opentype');
+}
 
-   .navbar-brand {
-     margin-left: 20rem;
-     width: 15%;
-   }
+.navbar-brand {
+  margin-left: 20rem;
+  width: 15%;
+}
 
-   body {
-     font-family: "BLAIR ITC STD", Sans-serif;
-     font-size: 15px;
-     font-weight: 400;
-   }
+body {
+  font-family: "BLAIR ITC STD", Sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
 
 
 
-   body {
-     color: #7E7E7E;
-   }
+body {
+  color: #7E7E7E;
+}
 
-   .nav-link {
-     position: relative;
-     text-decoration: none;
-   }
+.nav-link {
+  position: relative;
+  text-decoration: none;
+}
 
-   .nav-link::after {
-     content: '';
-     position: absolute;
-     left: 0;
-     bottom: -2px;
-     width: 100%;
-     height: 4px;
-     background-color: #E40414;
-     transform: scaleX(0);
-     transform-origin: right center;
-     transition: transform 0.2s ease;
-   }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 4px;
+  background-color: #E40414;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.2s ease;
+}
 
-   .nav-link:hover {
-     color: #E40414 !important;
-   }
+.nav-link:hover {
+  color: #E40414 !important;
+}
 
-   .nav-link:hover::after {
-     transform: scaleX(1);
-   }
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
 
-   #inicio {
-     color: #E40414 !important;
-   }
+#inicio {
+  color: #E40414 !important;
+}
 
-   #inicio::after {
-     content: '';
-     position: absolute;
-     left: 0;
-     bottom: -2px;
-     width: 100%;
-     height: 3.5px;
-     transform: scaleX(1);
-   }
+#inicio::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3.5px;
+  transform: scaleX(1);
+}
 
-   .navbar {
-     position: sticky;
-     top: 0;
-     z-index: 100;
-     transition: all 0.3s ease;
-   }
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
 
-   .logo {
-     transition: all 0.3s ease;
-   }
+.logo {
+  transition: all 0.3s ease;
+}
 
-   .navbar.smaller {
-     height: 4rem;
-     /* Adjust the height as needed */
-   }
+.navbar.smaller {
+  height: 4rem;
+  /* Adjust the height as needed */
+}
 
-   .logo.smaller {
-     max-height: 4rem;
-     /* Adjust the max height as needed */
-     width: auto;
-   }
+.logo.smaller {
+  max-height: 4rem;
+  /* Adjust the max height as needed */
+  width: auto;
+}
 
-   footer {
+footer {
 
-     background-image: url("https://www.arteplastica.cl/wp-content/uploads/2022/01/fondotitular-min.png");
-     color: white;
-     text-align: justify;
-     font-family: "AVENIR -BOOK", Sans-serif;
-   }
+  background-image: url("https://www.arteplastica.cl/wp-content/uploads/2022/01/fondotitular-min.png");
+  color: white;
+  text-align: justify;
+  font-family: "AVENIR -BOOK", Sans-serif;
+}
 
-   #logo-footer {
-     width: 20rem;
-   }
+#logo-footer {
+  width: 20rem;
+}
 
-   footer p {
-     color: #EDE6E6;
-     font-size: 100%;
-   }
+footer p {
+  color: #EDE6E6;
+  font-size: 100%;
+}
 
-   footer h2 {
-     font-size: 28px;
-     font-weight: 600;
-   }
+footer h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
 
-   footer i {
-     font-size: 1.2rem;
-   }
+footer i {
+  font-size: 1.2rem;
+}
 
-   footer a {
-     color: white;
-     text-decoration: none;
-   }
+footer a {
+  color: white;
+  text-decoration: none;
+}
 
-   .contact-info {
-     display: flex;
-     align-items: center;
-   }
+.contact-info {
+  display: flex;
+  align-items: center;
+}
 
-   .contact-info i {
-     margin-right: 1rem;
-     /* Adjust the spacing as needed */
-   }
+.contact-info i {
+  margin-right: 1rem;
+  /* Adjust the spacing as needed */
+}
 
-   .contact-info .contact-text {
-     font-weight: 900;
-   }
+.contact-info .contact-text {
+  font-weight: 900;
+}
 
-   .social-media i {
-     font-size: 24px;
-     /* Initial size of the icons */
-     transition: transform 0.3s ease;
-     /* Smooth transition with 0.3s duration */
-   }
+.social-media i {
+  font-size: 24px;
+  /* Initial size of the icons */
+  transition: transform 0.3s ease;
+  /* Smooth transition with 0.3s duration */
+}
 
-   .social-media i:hover {
-     animation: pulse 1s infinite;
-     /* Start the pulse animation on hover */
-   }
+.social-media i:hover {
+  animation: pulse 1s infinite;
+  /* Start the pulse animation on hover */
+}
 
-   @keyframes pulse {
-     0% {
-       transform: scale(1);
-       /* Initial size */
-     }
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    /* Initial size */
+  }
 
-     50% {
-       transform: scale(1.2);
-       /* Increased size */
-     }
+  50% {
+    transform: scale(1.2);
+    /* Increased size */
+  }
 
-     100% {
-       transform: scale(1);
-       /* Return to initial size */
-     }
-   }
+  100% {
+    transform: scale(1);
+    /* Return to initial size */
+  }
+}
 
-   a {
-     color: inherit;
-     /* Inherit the text color from the parent */
-     text-decoration: none;
-     /* Remove underline */
-   }
+a {
+  color: inherit;
+  /* Inherit the text color from the parent */
+  text-decoration: none;
+  /* Remove underline */
+}
 
-   a:hover {
-     color: white;
-     /* Set the desired color on hover */
-     text-decoration: none;
-     /* Remove underline on hover */
-   }
+a:hover {
+  color: white;
+  /* Set the desired color on hover */
+  text-decoration: none;
+  /* Remove underline on hover */
+}
 
-   .elementor-background-video-hosted {
-     width: 100%;
-   }
+.elementor-background-video-hosted {
+  width: 100%;
+}
 
-   .container-fluid {
-     padding: 0px;
-   }
+.container-fluid {
+  padding: 0px;
+}
 
-   #titulo-video {
-     color: white;
-     font-weight: 800;
-   }
+#titulo-video {
+  color: white;
+  font-weight: 800;
+}
 
-   .elementor-background-video-container {
-     position: relative;
-   }
+.elementor-background-video-container {
+  position: relative;
+}
 
-   .video-text {
-     position: absolute;
-     top: 10rem;
-     right: 9rem;
-   }
+.video-text {
+  position: absolute;
+  top: 10rem;
+  right: 9rem;
+}
 
-   #titulo-video {}
+#titulo-video {}
 
-   #img-video {
-     width: 15rem;
-   }
+#img-video {
+  width: 15rem;
+}
 
-   #btn-video {
-     color: white;
-     border-radius: 50px;
-     transition: all 0.3s ease;
-     border: 2px solid white;
-   }
+#btn-video {
+  color: white;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+}
 
-   #btn-video:hover {
-     color: grey;
-     background-color: white;
-     transform: scale(0.9);
-   }
+#btn-video:hover {
+  color: grey;
+  background-color: white;
+  transform: scale(0.9);
+}
 
-   .second-area {
-     position: absolute;
-     background-image: url('/static/app/img/fondotitular-min.png');
-     height: 281px;
-     width: 100%;
-     top: 35rem;
-   }
+.second-area {
+  position: absolute;
+  background-image: url('/static/app/img/fondotitular-min.png');
+  height: 281px;
+  width: 100%;
+  top: 35rem;
+}
 
-   #second-title {
-     color: white;
-     font-weight: 800;
-   }
+#second-title {
+  color: white;
+  font-weight: 800;
+}
 
-   .red-separator {
-     padding-top: 2px;
-     padding-bottom: 2px;
-     background-color: red;
-     width: 50rem;
-     margin: auto;
-   }
+.red-separator {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: red;
+  width: 50rem;
+  margin: auto;
+}
 
-   .third-section {
-     position: absolute;
-     top: 50rem;
-     left: 0;
-     right: 0;
-   }
+.third-section {
+  position: absolute;
+  top: 50rem;
+  left: 0;
+  right: 0;
+}
 
-   .carousel-wrapper {
-     position: relative;
-     height: 300px;
-     /* Adjust the desired height here */
-   }
+.carousel-wrapper {
+  position: relative;
+  height: 300px;
+  /* Adjust the desired height here */
+}
 
-   .carousel-image {
-     height: 400px;
-     object-fit: cover;
-   }
+.carousel-image {
+  height: 400px;
+  object-fit: cover;
+}
 
-   #third-title {
-     color: white;
-     font-weight: 800;
-   }
+#third-title {
+  color: white;
+  font-weight: 800;
+}
 
-   .fourth-section {
-     position: absolute;
-     background-image: url('/static/app/img/fondotitular-min.png');
-     height: 281px;
-     width: 100%;
-     top: 75rem;
-   }
+.fourth-section {
+  position: absolute;
+  background-image: url('/static/app/img/fondotitular-min.png');
+  height: 281px;
+  width: 100%;
+  top: 75rem;
+}
 
-   .fifth-section {
-     position: absolute;
-     background-color: #DC1414;
-     color: white;
-     height: 55px;
-     width: 100%;
-     top: 90rem;
-   }
+.fifth-section {
+  position: absolute;
+  background-color: #DC1414;
+  color: white;
+  height: 55px;
+  width: 100%;
+  top: 90rem;
+}
 
-   .fourth-title {
-     font-weight: 600;
-   }
+.fourth-title {
+  font-weight: 600;
+}
 
-   footer {
-     margin-top: 900px;
-   }
+footer {
+  margin-top: 30px;
+}
 
-   .red-separator-2 {
-     padding-top: 2px;
-     padding-bottom: 2px;
-     background-color: red;
-     width: 65rem;
-     margin: auto;
-   }
+.red-separator-2 {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: red;
+  width: 65rem;
+  margin: auto;
+}
 
-   .sixth-section {
-     position: absolute;
-     width: 100%;
-     top: 93rem;
-     background-image: url('/static/app/img/fondo-min-1.png');
-     height: 550px;
-   }
+.sixth-section {
+  position: absolute;
+  width: 100%;
+  top: 93rem;
+  background-image: url('/static/app/img/fondo-min-1.png');
+  height: 550px;
+}
 
-   .sixth-section .card-img-top {
-     height: 100px;
-     width: 100px;
-   }
+.sixth-section .card-img-top {
+  height: 100px;
+  width: 100px;
+}
 
-   .card-text {
-     color: black;
-   }
+.card-text {
+  color: black;
+}
 
-   .all-images {
-     margin: auto;
-     margin-top: 80px;
-   }
+.all-images {
+  margin: auto;
+  margin-top: 80px;
+}
 
-   .all-images img {
-     width: 175px;
-     height: 175px;
-   }
+.all-images img {
+  width: 175px;
+  height: 175px;
+}
 
-   .sixth-section .row {
-     width: 80%;
-   }
+.sixth-section .row {
+  width: 80%;
+}
 
-   .custom-button {
-     border-radius: 50px;
-     background-color: #df0101de;
-     /* Adjust the red color intensity as needed */
-     color: white;
-     font-weight: bold;
-     border: none;
-   }
+.custom-button {
+  border-radius: 50px;
+  background-color: #df0101de;
+  /* Adjust the red color intensity as needed */
+  color: white;
+  font-weight: bold;
+  border: none;
+}
 
-   .custom-button:hover {
-     background-color: #cc0000;
-     /* Adjust the red color intensity on hover as needed */
-   }
+.custom-button:hover {
+  background-color: #cc0000;
+  /* Adjust the red color intensity on hover as needed */
+}
