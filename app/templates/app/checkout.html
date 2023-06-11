@@ -1,0 +1,125 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/tienda.css' %} ">
+{% endblock %}
+{% block titulo %}
+Checkout
+{% endblock titulo %}
+{% block contenido %}
+
+<!--------------------------------------------------------------------
+---------------------------HEADER-----------------------------------
+-------------------------------------------------------------------->
+<div class="container-fluid">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+
+        <!-- Brand Logo -->
+        <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
+
+        <!-- Button for Collapsible Navbar -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" id="inicio" href="{% url 'home' %}">INICIO</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'empresa' %}">EMPRESA</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
+                </li>
+                {% if perms.app.view_postulacion %}
+                <li class=" nav-item mr-3">
+                        <a class="nav-link" href="{% url 'listar_postulaciones' %}"">LISTAR POSTULACIONES</a>
+                </li>   
+                {% endif %}
+                {% if user.is_authenticated %}      
+                <li class=" nav-item mr-3">
+                            <a class="nav-link" href="{% url 'logout' %}">CERRAR SESIÓN</a>
+                </li>
+                <li class=" nav-item mr-3">
+                    <a class="nav-link" href="{% url 'login' %}">Bienvenido @{{ user.username }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <!-- contenido -->
+    <br>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-sm-6">
+                <h4>Resumen de la compra</h4>
+                <hr>
+                {% for item in cart_items %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h5>Producto: {{item.producto.nombre}}</h5>
+                        <p>Cantidad: {{item.quantity}}</p>
+                        <p class="fw-bold">Precio: {{item.producto.precio}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                <p class="fw-bold">Precio total: {{totalamount}}</p>
+                <small>#Terminos de condiciones</small>
+            </div>
+            <div class="col-sm-4 offset-sm-1">
+                <h4>Seleccionar dirección de envio</h4>
+                <hr>
+                <form method="post" id="myform">
+                    {% csrf_token %}
+                    {% for ad in add %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>{{ad.nombre}}</h5>
+                            <p>Telefono: {{ad.telefono}}</p>
+                            <p>{{ad.region}} {{ad.ciudad}} {{ad.comuna}} {{ad.direccion}} - {{ad.codigo_postal}}</p>
+                        </div>
+                    </div>
+                    <div class="form-check mt-2 mb-5">
+                        <input class="form-check-input" type="radio" name="custid" id="custadd{{forloop.counter}}"
+                            value="{{ad.id}}">
+                        <label class="form-check-label fw-bold" for="custadd{{forloop.counter}}">
+                            Direccion:{{forloop.counter}}</label>
+                    </div>
+                    {% endfor %}
+                    <div class="form-check mb-3">
+                        <label for="totamount" class="form-label"><strong>
+                                <h3>Valor total</h3>
+                            </strong></label>
+                        <h2><span id="totalamount"><strong>$ {{totalamount}}</strong></span></h2>
+
+                    </div>
+                    <div class="text-end">
+                        <!-- <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continuar</button> -->
+                        <!-- <div id="paypal-button-container"></div> -->
+                        <button id="rzp-button1" type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Pagar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- contenido -->
+</div>
+
+
+{% endblock %}
+
+{% block payment-gateway %}
+<script>
+
+</script>
+{% endblock payment-gateway %}

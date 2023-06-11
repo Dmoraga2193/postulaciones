@@ -56,13 +56,15 @@ INSTALLED_APPS = [
     "rest_framework",
     "phonenumber_field",
     "django_filters",
-    "fontawesomefree"
+    "fontawesomefree",
+    "razorpay",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
+APPEND_SLASH=False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,5 +154,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PHONENUMBER_DEFAULT_REGION = 'CL'
 PHONENUMBER_DB_FORMAT = 'NATIONAL'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 

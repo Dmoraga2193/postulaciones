@@ -16,23 +16,24 @@
 
 <body>
     {% load crispy_forms_tags %}
-        <div class="wrapper gradient-border">
-            <div class="logo">
-                <img src="{% static 'app/img/logo-aplastica.png' %}" alt="">
-            </div>
-            <div class="text-center mt-4 name">
-                Arte Plastica
-            </div>
-            <form class="p-3 mt-3" action="" method="post">
-                {% csrf_token %}
-                {{ form | crispy}}
-                <input type="submit" value="Ingresar" class="btn mt-3 "></input>
-            </form>
-            <div class="text-center mt-4">
-                <a href="{% url 'home' %}">ir al home</a> |
-                <a href="{% url 'registro' %}">registrarse</a>
-            </div>
+    <div class="wrapper gradient-border">
+        <div class="logo">
+            <img src="{% static 'app/img/logo-aplastica.png' %}" alt="">
         </div>
+        <div class="text-center mt-4 name">
+            Arte Plastica
+        </div>
+        <form class="p-3 mt-3" action="" method="post">
+            {% csrf_token %}
+            {{ form | crispy}}
+            <input type="submit" value="Ingresar" class="btn mt-3 "></input>
+        </form>
+        <div class="text-center mt-4">
+            <a href="{% url 'home' %}">ir al home</a> |
+            <a href="{% url 'password_reset' %}">¿olvidaste tu contraseña?</a> |
+            <a href="{% url 'registro' %}">registrarse</a>
+        </div>
+    </div>
 </body>
 
 </html>

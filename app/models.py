@@ -1,6 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator, RegexValidator, EmailValidator
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -53,6 +54,25 @@ comunas_santiago = [
     [18, "Pudahuel"]
 ]
 
+regiones_chile =(
+     ("Región de Arica y Parinacota","Región de Arica y Parinacota"),
+     ("Región de Tarapacá","Región de Tarapacá"),
+     ("Región de Antofagasta","Región de Antofagasta"),
+     ("Región de Atacama","Región de Atacama"),
+     ("Región de Coquimbo","Región de Coquimbo"),
+     ("Región de Valparaíso","Región de Valparaíso"),
+     ("Región Metropolitana","Región Metropolitana"),
+     ("Región de O'Higgins","Región de O'Higgins"),
+     ("Región del Maule","Región del Maule"),
+     ("Región del Ñuble","Región del Ñuble"),
+     ("Región del Biobío","Región del Biobío"),
+     ("Región de La Araucanía","Región de La Araucanía"),
+     ("Región de Los Ríos","Región de Los Ríos"),
+     ("Región de Los Lagos","Región de Los Lagos"),
+     ("Región de Aysén","Región de Aysén"),
+     ("Región de Magallanes","Región de Magallanes")
+)
+
 class Postulacion(models.Model):
     nombre = models.CharField(max_length=15, verbose_name='Nombre', validators=[RegexValidator(regex=r'^[a-zA-Z]*$',message='El nombre solo debe contener letras')])
     ap_paterno = models.CharField(max_length=15, verbose_name='Apellido Paterno',validators=[RegexValidator(regex=r'^[a-zA-Z]*$',message='El apellido solo debe contener letras')])
@@ -72,5 +92,79 @@ class Postulacion(models.Model):
 
 
     def __str__(self):
-         return self.nombre
+         return self.nombre   
+
+opciones_categoria = (
+    ("AC", "Acelerante"),
+    ("AD", "Aditivo"),
+    ("CT", "Catalizador"),
+    ("CA", "Carga"),
+    ("EP", "Epóxico"),
+    ("FV", "Fibra de vidrio"),
+    ("GC", "Gel Coat"),
+    ("PO", "Poliuretano"),
+    ("RE", "Resina"),
+    ("SV", "solvente"),
+)
     
+class Producto(models.Model):
+     nombre = models.CharField(max_length=100)
+     categoria = models.CharField(choices=opciones_categoria, max_length=2)
+     descripcion = models.TextField()
+     precio = models.FloatField()
+     imagen_producto = models.ImageField(upload_to='productos')
+
+     def __str__(self):
+          return self.nombre
+     
+class Cliente(models.Model):
+     usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+     nombre = models.CharField(max_length=200)
+     region = models.CharField(choices=regiones_chile,max_length=100)
+     ciudad = models.CharField(max_length=50)
+     comuna = models.CharField(max_length=50)
+     direccion = models.CharField(max_length=200)
+     telefono = models.IntegerField(default=0)
+     codigo_postal = models.IntegerField()
+     def __str__(self):
+          return self.nombre
+     
+class Cart(models.Model):
+     usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+     producto = models.ForeignKey(Producto,on_delete=models.CASCADE)
+     quantity = models.PositiveIntegerField(default=1)
+
+     @property
+     def total_cost(self):
+          return self.quantity * self.producto.precio
+     
+opciones_status = (
+    ("Aceptado", "Aceptado"),
+    ("Empaquetado", "Empaquetado"),
+    ("En Camino", "En Camino"),
+    ("Entregado", "Entregado"),
+    ("Cancelado", "Cancelado"),
+    ("Pendiente", "Pendiente"),
+)
+
+
+class Payment(models.Model):
+     usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+     cantidad = models.FloatField()
+     razorpay_order_id = models.CharField(max_length=100,blank=True,null=True)
+     razorpay_payment_status = models.CharField(max_length=100,blank=True,null=True)
+     razorpay_payment_id = models.CharField(max_length=100,blank=True,null=True)
+     paid = models.BooleanField(default=False)
+     
+class OrderPlaced(models.Model):
+     usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+     cliente = models.ForeignKey(Cliente,on_delete=models.CASCADE)
+     producto = models.ForeignKey(Producto,on_delete=models.CASCADE)
+     quantity = models.PositiveIntegerField(default=1)
+     fecha_orden = models.DateTimeField(auto_now_add=True)
+     status = models.CharField(max_length=50,choices=opciones_status,default='Pendiente')
+     payment = models.ForeignKey(Payment,on_delete=models.CASCADE,default="")
+
+     @property
+     def total_cost(self):
+          return self.quantity * self.producto.precio

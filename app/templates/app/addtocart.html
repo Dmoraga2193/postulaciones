@@ -1,0 +1,166 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/style_tienda.css' %} ">
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/tienda.css' %} ">
+
+{% endblock %}
+<script type="text/javascript" src="{% static 'app/js/all.min.js' %}"></script>
+
+{% block contenido %}
+
+<!--------------------------------------------------------------------
+---------------------------HEADER-----------------------------------
+-------------------------------------------------------------------->
+<div class="container-fluid">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+
+        <!-- Brand Logo -->
+        <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
+
+        <!-- Button for Collapsible Navbar -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" id="inicio" href="{% url 'home' %}">INICIO</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'empresa' %}">EMPRESA</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
+                </li>
+                <li class=" nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">PRODUCTOS <i
+                                class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'categoria' 'AC' %}" class="dropdown-item nav-link">Acelerantes</a></li>
+                            <li><a href="{% url 'categoria' 'AD' %}" class="dropdown-item nav-link">Aditivos</a></li>
+                            <li><a href="{% url 'categoria' 'CT' %}" class="dropdown-item nav-link">Catalizadores</a>
+                            </li>
+                            <li><a href="{% url 'categoria' 'CA' %}" class="dropdown-item nav-link">Cargas</a></li>
+                            <li><a href="{% url 'categoria' 'EP' %}" class="dropdown-item nav-link">Epóxicos</a></li>
+                            <li><a href="{% url 'categoria' 'FV' %}" class="dropdown-item nav-link">Fibras de vidrio</a>
+                            </li>
+                            <li><a href="{% url 'categoria' 'GC' %}" class="dropdown-item nav-link">Gel Coat</a></li>
+                            <li><a href="{% url 'categoria' 'PO' %}" class="dropdown-item nav-link">Poliuretano</a></li>
+                            <li><a href="{% url 'categoria' 'RE' %}" class="dropdown-item nav-link">Resinas</a></li>
+                            <li><a href="{% url 'categoria' 'SV' %}" class="dropdown-item nav-link">Solventes</a></li>
+                        </ul>
+                </li>
+                {% if perms.app.view_postulacion %}
+                <li class=" nav-item mr-3">
+                    <a class="nav-link" href="{% url 'listar_postulaciones' %}">LISTAR POSTULACIONES</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Bienvenido @{{ user.username }} <i
+                            class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'perfil' %}" class="dropdown-item nav-link">Perfil</a></li>
+                        <li><a href="" class="dropdown-item nav-link">Ordenes</a></li>
+                        <li><a href="{% url 'passwordchange' %}" class="dropdown-item nav-link">Cambiar contraseña</a>
+                        </li>
+                        <li><a href="{% url 'logout' %}" class="dropdown-item nav-link">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
+                </li>
+                {% endif %}
+                <li class=" nav-item mr-3">
+                    <a class="nav-link" href="">Cart 4</a>
+                </li>
+                <li class=" nav-item mr-3">
+                    <a class="nav-link" href="">Whishlist 4</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- contenido -->
+    <div class="container my-5">
+        <div class="row">
+            {% if cart %}
+            <h1 class="text-center mb-5">Carro de compras</h1>
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Carro</h3>
+                        {% for item in cart %}
+                        <div class="row">
+                            <div class="col-sm-3 text-center align-self-center"><img
+                                    src="{{item.producto.imagen_producto.url}}" alt=""
+                                    class="img-fluid img-thumbnail shadow-sm" height="150" width="150"></div>
+                            <div class="col-sm-9">
+                                <div>
+                                    <h5>{{item.producto.nombre}}</h5>
+                                    <p class="mb2 text-muted small">{{item.producto.descripcion}}</p>
+                                    <div class="my-3">
+                                        <label for="quantity">Cantidad:</label>
+                                        <a class="minus-cart btn" pid={{item.producto.id}}><i
+                                                class="fa-solid fa-square-minus"></i></i></a>
+                                        <span id="quantity">{{item.quantity}}</span>
+                                        <a class="plus-cart btn" pid={{item.producto.id}}><i
+                                                class="fa-solid fa-square-plus"></i></a>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <a class="remove-cart btn btn-sm btn-secondary mt-3"
+                                            pid={{item.producto.id}}>Remover articulo</a>
+                                        <p class="mb-0"><span><strong>$ {{item.producto.precio}}</strong></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="text-muted">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>El total de</h3>
+                        <ul class="list-group">
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Monto <span id="amount">$ {{amount}}</span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">Envio
+                                <span>$ 5.000</span>
+                            </li>
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Total</strong> <small>(incluye IVA)</small>
+                                </div>
+                                <span id="totalamount"><strong>$ {{totalamount}}</strong></span>
+                            </li>
+                        </ul>
+                        <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-primary">Confirmar orden</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <h1 class="text-center mb-5">Carro vacio</h1>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- contenido -->
+</div>
+
+
+{% endblock %}

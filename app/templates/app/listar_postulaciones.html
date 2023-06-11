@@ -55,24 +55,62 @@ Lista de postulaciones
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
-                </li>
-                {% if perms.app.view_postulacion %}
-                <li class=" nav-item mr-3">
-                            <a class="nav-link" id="inicio" href="{% url 'listar_postulaciones' %}"">LISTAR POSTULACIONES</a>
-                </li>   
-                {% endif %}
-                {% if user.is_authenticated %}      
-                <li class=" nav-item mr-3">
-                                <a class="nav-link" href="{% url 'logout' %}">CERRAR SESIÓN</a>
                     </li>
+                    <li class=" nav-item dropdown">
+                            <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">PRODUCTOS <i
+                                    class="fas fa-caret-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'categoria' 'AC' %}" class="dropdown-item nav-link">Acelerantes</a>
+                                </li>
+                                <li><a href="{% url 'categoria' 'AD' %}" class="dropdown-item nav-link">Aditivos</a>
+                                </li>
+                                <li><a href="{% url 'categoria' 'CT' %}"
+                                        class="dropdown-item nav-link">Catalizadores</a>
+                                </li>
+                                <li><a href="{% url 'categoria' 'CA' %}" class="dropdown-item nav-link">Cargas</a></li>
+                                <li><a href="{% url 'categoria' 'EP' %}" class="dropdown-item nav-link">Epóxicos</a>
+                                </li>
+                                <li><a href="{% url 'categoria' 'FV' %}" class="dropdown-item nav-link">Fibras de
+                                        vidrio</a>
+                                </li>
+                                <li><a href="{% url 'categoria' 'GC' %}" class="dropdown-item nav-link">Gel Coat</a>
+                                </li>
+                                <li><a href="{% url 'categoria' 'PO' %}" class="dropdown-item nav-link">Poliuretano</a>
+                                </li>
+                                <li><a href="{% url 'categoria' 'RE' %}" class="dropdown-item nav-link">Resinas</a></li>
+                                <li><a href="{% url 'categoria' 'SV' %}" class="dropdown-item nav-link">Solventes</a>
+                                </li>
+                            </ul>
+                    </li>
+                    {% if perms.app.view_postulacion %}
                     <li class=" nav-item mr-3">
-                        <a class="nav-link" href="{% url 'login' %}">Bienvenido @{{ user.username }}</a>
+                        <a class="nav-link" id="inicio" href="{% url 'listar_postulaciones' %}">LISTAR POSTULACIONES</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Bienvenido @{{ user.username }} <i
+                                class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="" class="dropdown-item nav-link">Perfil</a></li>
+                            <li><a href="" class="dropdown-item nav-link">Ordenes</a></li>
+                            <li><a href="" class="dropdown-item nav-link">Cambiar contraseña</a></li>
+                            <li><a href="{% url 'logout' %}" class="dropdown-item nav-link">Cerrar sesión</a></li>
+                        </ul>
                     </li>
                     {% else %}
                     <li class="nav-item mr-3">
                         <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
                     </li>
                     {% endif %}
+                    <li class=" nav-item mr-3">
+                        <a class="nav-link" href="">Cart 4</a>
+                    </li>
+                    <li class=" nav-item mr-3">
+                        <a class="nav-link" href="">Whishlist 4</a>
+                    </li>
                 </ul>
             </div>
         </nav>
