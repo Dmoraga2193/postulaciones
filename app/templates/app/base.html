@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.css' %} ">
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/all.css' %} ">
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/fontawesome.css' %} ">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/stylish-portfolio.css' %} ">
 
     {% block css %}
     {% endblock %}
@@ -19,7 +19,101 @@
 
     <title>Arte Plastica | {% block titulo %}{% endblock titulo %} </title>
 
+    <!-- INICIO Barra de navegacion -->
 
+    <div class="container-fluid">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+
+            <!-- Brand Logo -->
+            <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
+
+            <!-- Button for Collapsible Navbar -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" {% block linkactivo_inicio %}{% endblock linkactivo_inicio %}
+                            href="{% url 'home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" {% block linkactivo_empresa %}{% endblock linkactivo_empresa %}
+                            href="{% url 'empresa' %}">Empresa</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" {% block linkactivo_postular %}{% endblock linkactivo_postular %}
+                            href="{% url 'postulacion' %}">Postular</a>
+                    </li>
+                    <li class=" nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Productos <i
+                                class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'categoria' 'AC' %}" class="dropdown-item nav-link">Acelerantes</a></li>
+                            <li><a href="{% url 'categoria' 'AD' %}" class="dropdown-item nav-link">Aditivos</a></li>
+                            <li><a href="{% url 'categoria' 'CT' %}" class="dropdown-item nav-link">Catalizadores</a>
+                            </li>
+                            <li><a href="{% url 'categoria' 'CA' %}" class="dropdown-item nav-link">Cargas</a></li>
+                            <li><a href="{% url 'categoria' 'EP' %}" class="dropdown-item nav-link">Epóxicos</a></li>
+                            <li><a href="{% url 'categoria' 'FV' %}" class="dropdown-item nav-link">Fibras de vidrio</a>
+                            </li>
+                            <li><a href="{% url 'categoria' 'GC' %}" class="dropdown-item nav-link">Gel Coat</a></li>
+                            <li><a href="{% url 'categoria' 'PO' %}" class="dropdown-item nav-link">Poliuretano</a></li>
+                            <li><a href="{% url 'categoria' 'RE' %}" class="dropdown-item nav-link">Resinas</a></li>
+                            <li><a href="{% url 'categoria' 'SV' %}" class="dropdown-item nav-link">Solventes</a></li>
+                        </ul>
+                    </li>
+                    <li class=" nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Aprende con nosotros <i
+                                class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'cargas' %}" class="dropdown-item nav-link">Que son las cargas?</a></li>
+                            <li><a href="{% url 'resina_epoxica' %}" class="dropdown-item nav-link">Conociendo la resina
+                                    epóxica</a></li>
+                            <li><a href="{% url 'fibra_vidrio' %}" class="dropdown-item nav-link">La fibra de vidrio</a>
+                            </li>
+                            <li><a href="{% url 'gel_coat' %}" class="dropdown-item nav-link">El Gel Coat</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {% if perms.app.view_postulacion %}
+                    <li class=" nav-item mr-3">
+                        <a class="nav-link" {% block linkactivo_lista %}{% endblock linkactivo_lista %}
+                            href="{% url 'listar_postulaciones' %}">Listar postulaciones</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Bienvenido @{{ user.username }} <i
+                                class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'perfil' %}" class="dropdown-item nav-link">Perfil</a></li>
+                            <li><a href="{% url 'passwordchange' %}" class="dropdown-item nav-link">Cambiar
+                                    contraseña</a>
+                            </li>
+                            <li><a href="{% url 'logout' %}" class="dropdown-item nav-link">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- FIN Barra de navegacion -->
+
+
+    <!-- INICIO Contenido -->
 
 <body>
 
@@ -27,11 +121,11 @@
     {% endblock %}
 </body>
 
-<!--------------------------------------------------------------------
----------------------------FOOTER-----------------------------------
--------------------------------------------------------------------->
+<!-- FIN Contenido -->
 
-<footer class=" pt-5 pb-5">
+<!-- INICIO Footer -->
+
+<footer class=" pt-5 pb-5" style="margin-top: 0px;">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -80,6 +174,10 @@
     </div>
     {% block payment-gateway %} {% endblock payment-gateway %}
 </footer>
+
+<!-- FIN Footer -->
+
+
 <!-- Optional JavaScript -->
 <!-- Sweet Alert-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -102,7 +200,7 @@
 <script type="text/javascript" src="{% static 'app/js/bootstrap.js' %}"></script>
 <script src="https://kit.fontawesome.com/7e3f5de39d.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'app/js/all.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'app/js/carrito.js' %}"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
 
 </html>

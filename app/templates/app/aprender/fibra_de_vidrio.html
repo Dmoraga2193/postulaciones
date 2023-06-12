@@ -1,0 +1,171 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+{% block titulo %}
+Fibra de Vidrio
+{% endblock titulo %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/aprender/styles.css' %} ">
+<script type="text/javascript" src="{% static 'app/js/aprender/scripts.js' %}"></script>
+{% endblock %}
+{% block contenido %}
+
+
+
+<div class="page-header page-header-dark bg-img-cover py-15"
+    style='background-image: url("{% static "app/img/aprender/fibravidrio_1.jpg" %}")'>
+    <div class="my-15 py-lg-10"></div>
+    <div class="svg-border-rounded text-light">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+            fill="currentColor">
+            <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+        </svg>
+    </div>
+</div>
+<section class="bg-light py-10">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1>FIBRA DE VIDRIO</h1>
+                <p class="lead">Son hebras muy finas de vidrio tejidas en distintas configuraciones o
+                    formas diferentes para formar una tela o malla.</p>
+                <hr />
+                <p>La fibra de vidrio es un material muy usado actualmente en distintos productos industrias, los cuales
+                    van desde el cableado telefónico, de internet o televisión por cable, hasta los de aislamiento
+                    térmico y acústico, elaboración de tanques, recipientes industriales de almacenamiento, entre muchos
+                    más.</p>
+                <p class="mb-0">Para su fabricación, se utiliza vidrio líquido salido de un horno de fusión, o
+                    bien se funden canicas de vidrio. El vidrio fundido se fuerza a pasar a través de orificios
+                    superfinos. Una vez fríos los hilos, se pueden entrelazar para formar la tela de fibra de vidrio o
+                    malla.</p>
+            </div>
+            <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                    src="{% static 'app/img/aprender/fibravidrio_2.jpg' %}" /></div>
+            <div class="col-lg-8">
+
+                <h4>La fibra de vidrio suele combinarse con resinas para mejorar el material final, dando lugar a un
+                    material compuesto extremadamente fuerte y duradero.</h4>
+                <p>Este material es básico para varias industrias gracias a sus fuertes propiedades:</p>
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>La
+                        resistencia del hilo de vidrio es 3 veces mayor que el acero.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Resiste
+                        naturalmente el fuego.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Brinda
+                        estabilidad dimensional.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Alta
+                        durabilidad.
+                    </li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Baja
+                        conductividad
+                        térmica.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Permeables
+                        dieléctricos.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-10">
+                <div class="card-columns card-columns-case-study mb-5">
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/productos/Velo-de-Vidrio.png' %}" /></div>
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/productos/Tela-de-Vidrio.png' %}" /></div>
+                </div>
+            </div>
+            <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                    src="{% static 'app/img/aprender/fibravidrio_3.jpg' %}" /></div>
+            <div class="col-lg-8">
+                <div class="card bg-primary-soft text-primary text-center mb-5">
+                    <div class="card-body">
+                        <p class="card-text lead">"Las fibras de vidrio sintético (fibra de vidrio) difieren de los
+                            asbestos en dos formas que pueden proveer al menos explicaciones parciales del porqué su
+                            baja toxicidad."</p>
+                    </div>
+                </div>
+                <h4>Éstas son las industrias donde está presente el hilo de fibra de vidrio, y con las cuales
+                    interactúas probablemente muy a menudo:</h4>
+                <br>
+                <h5>AUTOMOTRIZ</h5>
+                <p>Entre sus usos están:</p>
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Tejidos de fibra de vidrio en los discos del clutch y en pastillas de frenos para reforzarlos.
+                    </li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Trama de vidrio impregnada, que es usada para reforzar la correa de accionamiento.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Toldos y aislamiento.</li>
+                </ul>
+                <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                        src="{% static 'app/img/aprender/fibravidrio_4.jpg' %}" /></div>
+                <br>
+                <h5>CONSTRUCCIÓN</h5>
+                <p>Los hilos de fibra de vidrio en construcción se usan para:</p>
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Fabricar tejidos de malla para reforzar fachadas y prevenir grietas en las paredes interiores.
+                    </li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Los tejidos de malla son importantes en los sistemas de aislamiento.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Reforzar el cubrimiento de los suelos.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        La cobertura de paredes de fibra de vidrio se puede usar como acabado o decoración, y para
+                        renovación de paredes y techos.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Además sirven como protección contra el fuego y se puede pintar.</li>
+                </ul>
+                <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                        src="{% static 'app/img/aprender/fibravidrio_5.jpg' %}" /></div>
+                <br>
+                <h5>RECREATIVO</h5>
+                <p>También está presente en las actividades más divertidas. Nuestros hilos de fibra de vidrio son usados
+                    en la fabricación de:</p>
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Palos de hockey
+                    </li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Esquís de nieve</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Snowboards</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Esquís acuáticos</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Wakeboards</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Tablas de surf de remo</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Bates de béisbol</li>
+                </ul>
+                <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                        src="{% static 'app/img/aprender/fibravidrio_6.jpg' %}" /></div>
+                <br>
+                <h5>AEROESPACIAL</h5>
+                <p>En esta industria se emplea E-Glass, el cual es un filamento continuo de fibra de vidrio y está
+                    presente en:</p>
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Suelo
+                    </li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Closets</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Asientos</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Ductos de aire</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Área de carga</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-circle fa-2xs text-green"></i>
+                        Algunas aplicaciones de la cabina.</li>
+                </ul>
+                <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                        src="{% static 'app/img/aprender/fibravidrio_7.jpg' %}" /></div>
+                <hr class="my-5" />
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

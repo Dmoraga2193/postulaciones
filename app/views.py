@@ -45,6 +45,18 @@ def postulacion(request):
             data["form"] = formulario  
     return render(request, 'app/postulacion.html',data)
 
+def cargas(request):
+    return render(request, 'app/aprender/cargas.html')
+
+def resina_epoxica(request):
+    return render(request, 'app/aprender/resina_epoxica.html')
+
+def fibra_vidrio(request):
+    return render(request, 'app/aprender/fibra_de_vidrio.html')
+
+def gel_coat(request):
+    return render(request, 'app/aprender/gelcoat.html')
+
 @permission_required('app.view_postulacion')
 def listar_postulaciones(request):    
     postulaciones = Postulacion.objects.all()
@@ -91,7 +103,6 @@ def eliminar_postulacion(request, id):
     messages.success(request,'Postulacion Eliminada Correctamente')
     return redirect(to="listar_postulaciones")
 
-@staff_member_required
 def registro(request):
 
     data = {
@@ -203,124 +214,5 @@ def password_reset_request(request):
     }
     return render(request, 'app/password_reset.html', context)
 
-def add_to_cart(request):
-    usuario=request.user
-    producto_id=request.GET.get('prod_id')
-    producto = Producto.objects.get(id=producto_id)
-    Cart(usuario=usuario,producto=producto).save()
-    return redirect('/cart')
 
 
-def show_cart(request):
-    usuario = request.user
-    cart = Cart.objects.filter(usuario=usuario)
-    amount = 0
-    for p in cart:
-        value = p.quantity * p.producto.precio
-        amount = amount + value
-    totalamount = amount
-    return render(request, 'app/addtocart.html',locals())
-
-class checkout(View):
-    def get(self,request):
-        usuario = request.user
-        add=Cliente.objects.filter(usuario=usuario)
-        cart_items=Cart.objects.filter(usuario=usuario)
-        amount = 0
-        for p in cart_items:
-            value = p.quantity * p.producto.precio
-            amount = amount + value
-        totalamount = amount * 100
-        razoramount = int(totalamount)
-        cliente = razorpay.Client(auth=(settings.RAZOR_KEY_ID,settings.RAZOR_KEY_SECRET))
-        data = {"amount":razoramount, "currency": "INR","receipt":"order_rcptid_11"}
-        payment_response = cliente.order.create(data=data)
-        print(payment_response)
-        #{'id': 'order_M0occXNT76FBxJ', 'entity': 'order', 'amount': 3198000, 'amount_paid': 0, 'amount_due': 3198000, 'currency': 'INR', 'receipt': 'order_rcptid_11', 'offer_id': None, 'status': 'created', 'attempts': 0, 'notes': [], 'created_at': 1686528578}
-        order_id = payment_response['id']
-        order_status = payment_response['status']
-        if order_status == 'created':
-            payment = Payment(
-                usuario = usuario,
-                cantidad = totalamount,
-                razorpay_order_id=order_id,
-                razorpay_payment_status=order_status
-            )
-            payment.save()
-        return render(request, 'app/checkout.html', locals())
-
-def payment_done(request):
-    order_id=request.GET.get('order_id')
-    payment_id=request.GET.get('payment_id')
-    cust_id=request.GET.get('cust_id')
-    usuario=request.user
-    cliente=Cliente.objects.get(id=cust_id)
-    payment=Payment.objects.get(razorpay_order_id=order_id)
-    payment.paid=True
-    payment.razorpay_payment_id = payment_id
-    payment.save()
-    #para guardar los detalles de la orden
-    cart=Cart.objects.filter(usuario=usuario)
-    for c in cart:
-        OrderPlaced(usuario=usuario,cliente=cliente,producto=c.producto,quantity=c.quantity,payment=payment).save()
-        c.delete()
-    
-    return redirect("orders")
-
-def plus_cart(request):
-    if request.method == 'GET':
-        prod_id=request.GET['prod_id']
-        c = Cart.objects.get(Q(producto=prod_id) & Q(usuario=request.user))
-        c.quantity+=1
-        c.save()
-        usuario = request.user
-        cart = Cart.objects.filter(usuario=usuario)
-        amount = 0
-        for p in cart:
-            value = p.quantity * p.producto.precio
-            amount = amount + value
-        totalamount = amount      
-        data={
-            'quantity':c.quantity,
-            'amount':amount,
-            'totalamount':totalamount
-        }
-        return JsonResponse(data)
-
-def minus_cart(request):
-    if request.method == 'GET':
-        prod_id=request.GET['prod_id']
-        c = Cart.objects.get(Q(producto=prod_id) & Q(usuario=request.user))
-        c.quantity-=1
-        c.save()
-        usuario = request.user
-        cart = Cart.objects.filter(usuario=usuario)
-        amount = 0
-        for p in cart:
-            value = p.quantity * p.producto.precio
-            amount = amount + value
-        totalamount = amount        
-        data={
-            'quantity':c.quantity,
-            'amount':amount,
-            'totalamount':totalamount
-        }
-        return JsonResponse(data)
-    
-def remove_cart(request):
-    if request.method == 'GET':
-        prod_id=request.GET['prod_id']
-        c = Cart.objects.get(Q(producto=prod_id) & Q(usuario=request.user))
-        c.delete()
-        usuario = request.user
-        cart = Cart.objects.filter(usuario=usuario)
-        amount = 0
-        for p in cart:
-            value = p.quantity * p.producto.precio
-            amount = amount + value
-        totalamount = amount        
-        data={            
-            'amount':amount,
-            'totalamount':totalamount
-        }
-        return JsonResponse(data)

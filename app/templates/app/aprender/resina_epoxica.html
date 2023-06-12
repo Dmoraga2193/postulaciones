@@ -1,0 +1,101 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+{% block titulo %}
+Fibra de vidrio
+{% endblock titulo %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/aprender/styles.css' %} ">
+<script type="text/javascript" src="{% static 'app/js/aprender/scripts.js' %}"></script>
+{% endblock %}
+
+
+{% block contenido %}
+
+
+<div class="page-header page-header-dark bg-img-cover py-15"
+    style='background-image: url("{% static "app/img/aprender/epoxica_0.jpg" %}")'>
+    <div class="my-15 py-lg-10"></div>
+    <div class="svg-border-rounded text-light">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+            fill="currentColor">
+            <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+        </svg>
+    </div>
+</div>
+<section class="bg-light py-10">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1>Resina Epóxica</h1>
+                <p class="lead">Es un polímero termoestable que se endurece cuando se mezcla con un catalizador o
+                    endurecedor.</p>
+                <hr />
+                <p>Polímero caracterizado por su dureza, brillo y versatilidad pasando por manualidades, revestimiento
+                    de suelos, adhesivo, entre otros.</p>
+                <p class="mb-0">Para poder utilizar resina epoxi es necesario tener en cuenta que
+                    esta resina necesita de un catalizador para poder endurecerse correctamente.</p>
+            </div>
+            <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                    src="{% static 'app/img/aprender/epoxica_2.jpg' %}" /></div>
+            <div class="col-lg-8">
+                <h4>¿Para qué sirve este tipo de resina epóxica?</h4>
+                <p>Como lo mencionamos al principio, la resina epóxica un polímero termoestable que pasa por una
+                    reacción química entre bisfenol A y moléculas de epiclorohidrina, con la finalidad de que pueda
+                    utilizarse en un mayor número de industrias, “principalmente en la de construcción, aeronáutica,
+                    naval, textil y artística, entre otras”, según la SRT.</p>
+                <br>
+            </div>
+            <div class="col-lg-10">
+                <div class="card-columns card-columns-case-study mb-5">
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/aprender/epoxica_3.jpg' %}" /></div>
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/aprender/epoxica_4.jpg' %}" /></div>
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/aprender/epoxica_5.jpg' %}" /></div>
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/aprender/epoxica_6.jpg' %}" /></div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card bg-primary-soft text-primary text-center mb-5">
+                    <div class="card-body">
+                        <p class="card-text lead">El Centro de Investigación en Química Aplicada señala que los éteres
+                            son, a nivel comercial, los más importantes, “ya que el 95% de las resinas epóxicas
+                            utilizadas son glicidil-éteres, obtenidos por reacción de la epiclorhidrina con el bisfenol
+                            A”.</p>
+                    </div>
+                </div>
+                <h4>Ventajas del uso de las resinas epóxicas</h4>
+                <p>Las ventajas de la resina epóxica se deben a que “son capaces de reaccionar con endurecedores o
+                    agentes de curado para generar estructuras muy reticuladas, con excelente resistencia a los ácidos,
+                    bases y disolventes con buenas propiedades mecánicas, de manera que se clasifican dentro de los
+                    polímeros termoestables”.</p>
+                <p>Así lo explica el Centro de Investigación en Química Aplicada, y añade que estas resinas tienen una
+                    mayor resistencia “a los solventes, a la permeación de gases y a las temperaturas extremas”. Otras
+                    de las ventajas que tiene la resina epoxi son las siguientes.</p>
+
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Resistencia
+                        a altas temperaturas</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Altamente
+                        resistente a la corrosión</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Fácil
+                        aplicación y manejo</li>
+                    <li><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Fácil de limpiar
+                    </li>
+                    <li class="mb-3"><span class="fa-li"></span><i
+                            class="fas fa-check mr-2 text-green"></i>Autonivelante</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Altamente
+                        polivalente</li>
+                </ul>
+                <hr class="my-5" />
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -8,130 +8,48 @@
 {% block titulo %}
 Categoria
 {% endblock titulo %}
+{% block linkactivo %}id="inicio"{% endblock linkactivo %}
 
 {% block contenido %}
 
-<!--------------------------------------------------------------------
----------------------------HEADER-----------------------------------
--------------------------------------------------------------------->
-<div class="container-fluid">
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
-        <!-- Brand Logo -->
-        <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
 
-        <!-- Button for Collapsible Navbar -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'home' %}">INICIO</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'empresa' %}">EMPRESA</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
-                </li>
-                <li class=" nav-item dropdown">
-                        <a href="" id="inicio" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">PRODUCTOS <i
-                                class="fas fa-caret-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'categoria' 'AC' %}" class="dropdown-item nav-link">Acelerantes</a></li>
-                            <li><a href="{% url 'categoria' 'AD' %}" class="dropdown-item nav-link">Aditivos</a></li>
-                            <li><a href="{% url 'categoria' 'CT' %}" class="dropdown-item nav-link">Catalizadores</a>
-                            </li>
-                            <li><a href="{% url 'categoria' 'CA' %}" class="dropdown-item nav-link">Cargas</a></li>
-                            <li><a href="{% url 'categoria' 'EP' %}" class="dropdown-item nav-link">Epóxicos</a></li>
-                            <li><a href="{% url 'categoria' 'FV' %}" class="dropdown-item nav-link">Fibras de vidrio</a>
-                            </li>
-                            <li><a href="{% url 'categoria' 'GC' %}" class="dropdown-item nav-link">Gel Coat</a></li>
-                            <li><a href="{% url 'categoria' 'PO' %}" class="dropdown-item nav-link">Poliuretano</a></li>
-                            <li><a href="{% url 'categoria' 'RE' %}" class="dropdown-item nav-link">Resinas</a></li>
-                            <li><a href="{% url 'categoria' 'SV' %}" class="dropdown-item nav-link">Solventes</a></li>
-                        </ul>
-                </li>
-                {% if perms.app.view_postulacion %}
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="{% url 'listar_postulaciones' %}">LISTAR POSTULACIONES</a>
-                </li>
-                {% endif %}
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Bienvenido @{{ user.username }} <i
-                            class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="" class="dropdown-item nav-link">Perfil</a></li>
-                        <li><a href="" class="dropdown-item nav-link">Ordenes</a></li>
-                        <li><a href="" class="dropdown-item nav-link">Cambiar contraseña</a></li>
-                        <li><a href="{% url 'logout' %}" class="dropdown-item nav-link">Cerrar sesión</a></li>
-                    </ul>
-                </li>
-                {% else %}
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
-                </li>
-                {% endif %}
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="">Cart 4</a>
-                </li>
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="">Whishlist 4</a>
-                </li>
-            </ul>
+<!-- contenido -->
+<br>
+<div class="container">
+    <div class="col-lg-8 border p-3 main-section bg-white">
+        <div class="row hedding m-0 pl-3 pt-0 pb-3">
+            <h1>{{producto}}</h1>
         </div>
-    </nav>
-
-    <!-- contenido -->
-    <br>
-    <div class="container">
-        <div class="col-lg-8 border p-3 main-section bg-white">
-            <div class="row hedding m-0 pl-3 pt-0 pb-3">
-                <h1>{{producto}}</h1>
+        <div class="row m-0">
+            <div class="col-lg-4 left-side-product-box pb-3">
+                <img src="{{producto.imagen_producto.url}}" style="width: 100%; display: block; margin: auto;"
+                    class=" border p-3">
             </div>
-            <div class="row m-0">
-                <div class="col-lg-4 left-side-product-box pb-3">
-                    <img src="{{producto.imagen_producto.url}}" style="width: 100%; display: block; margin: auto;"
-                        class=" border p-3">
-                </div>
-                <div class="col-lg-8">
-                    <div class="right-side-pro-detail border p-3 m-0">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <span>PRECIO: </span>
+            <div class="col-lg-8">
+                <div class="right-side-pro-detail border p-3 m-0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <span>ID: </span>
 
-                            </div>
-                            <div class="col-lg-12">
-                                <p class="m-0 p-0 price-pro">
-                                <h4><strong>${{producto.precio}}</strong>
-                                </h4>
-                                </p>
-                                <hr class="p-0 m-0">
-                            </div>
-                            <div class="col-lg-12 pt-2">
-                                <h5>Detalle del producto:</h5>
-                                <span>{{producto.descripcion}}</span>
-                                <hr class="m-0 pt-2 mt-2">
-                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <p class="m-0 p-0 price-pro">
+                            <h4><strong>{{producto.id}}</strong>
+                            </h4>
+                            </p>
+                            <hr class="p-0 m-0">
+                        </div>
+                        <div class="col-lg-12 pt-2">
+                            <h5>Detalle del producto:</h5>
+                            <span>{{producto.descripcion}}</span>
+                            <hr class="m-0 pt-2 mt-2">
+                        </div>
 
-                            <div class="col-lg-12 mt-3">
-                                <div class="row">
-                                    <div class="col-lg-6 pb-2">
-                                        <form action="/add-to-cart" class="d-inline">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="prod_id" value={{producto.id}} />
-                                            <button type="submit" class="btn btn-success w-100">Añadir al carro</button>
-                                        </form>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <a href="{% url 'home' %}" class="btn btn-danger w-100">Volver</a>
-                                    </div>
+                        <div class="col-lg-12 mt-3">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a href="{% url 'home' %}" class="btn btn-danger w-100">Volver</a>
                                 </div>
                             </div>
                         </div>
@@ -140,11 +58,11 @@ Categoria
             </div>
         </div>
     </div>
-
-
-    <!-- contenido -->
-
 </div>
+
+
+<!-- contenido -->
+
 
 
 

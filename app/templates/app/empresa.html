@@ -5,158 +5,84 @@
 {% block titulo %}
 Empresa
 {% endblock titulo %}
+{% block linkactivo_empresa %}id="inicio"{% endblock linkactivo_empresa %}
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/css/empresa.css' %}">
 {% endblock %}
 {% block contenido %}
 
-<!--------------------------------------------------------------------
----------------------------HEADER-----------------------------------
--------------------------------------------------------------------->
-<div class="container-fluid ">
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
-        <!-- Brand Logo -->
-        <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
 
-        <!-- Button for Collapsible Navbar -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'home' %}">INICIO</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" id="inicio" href="{% url 'empresa' %}">EMPRESA</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
-                </li>
-                <li class=" nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">PRODUCTOS <i
-                                class="fas fa-caret-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'categoria' 'AC' %}" class="dropdown-item nav-link">Acelerantes</a></li>
-                            <li><a href="{% url 'categoria' 'AD' %}" class="dropdown-item nav-link">Aditivos</a></li>
-                            <li><a href="{% url 'categoria' 'CT' %}" class="dropdown-item nav-link">Catalizadores</a>
-                            </li>
-                            <li><a href="{% url 'categoria' 'CA' %}" class="dropdown-item nav-link">Cargas</a></li>
-                            <li><a href="{% url 'categoria' 'EP' %}" class="dropdown-item nav-link">Epóxicos</a></li>
-                            <li><a href="{% url 'categoria' 'FV' %}" class="dropdown-item nav-link">Fibras de vidrio</a>
-                            </li>
-                            <li><a href="{% url 'categoria' 'GC' %}" class="dropdown-item nav-link">Gel Coat</a></li>
-                            <li><a href="{% url 'categoria' 'PO' %}" class="dropdown-item nav-link">Poliuretano</a></li>
-                            <li><a href="{% url 'categoria' 'RE' %}" class="dropdown-item nav-link">Resinas</a></li>
-                            <li><a href="{% url 'categoria' 'SV' %}" class="dropdown-item nav-link">Solventes</a></li>
-                        </ul>
-                </li>
-                {% if perms.app.view_postulacion %}
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="{% url 'listar_postulaciones' %}">LISTAR POSTULACIONES</a>
-                </li>
-                {% endif %}
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Bienvenido @{{ user.username }} <i
-                            class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'perfil' %}" class="dropdown-item nav-link">Perfil</a></li>
-                        <li><a href="" class="dropdown-item nav-link">Ordenes</a></li>
-                        <li><a href="{% url 'passwordchange' %}" class="dropdown-item nav-link">Cambiar contraseña</a>
-                        </li>
-                        <li><a href="{% url 'logout' %}" class="dropdown-item nav-link">Cerrar sesión</a></li>
-                    </ul>
-                </li>
-                {% else %}
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
-                </li>
-                {% endif %}
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="">Cart 4</a>
-                </li>
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="">Whishlist 4</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<!-- contenido -->
 
-    <!-- contenido -->
+<div class="page-banner overlay-dark bg-image"
+    style="background-image: url(https://www.arteplastica.cl/wp-content/uploads/2022/01/footerBackground.png);">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <h1 class="text-danger display-2"><strong>Quienes somos</strong></h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+<div class="page-section">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 wow fadeInUp">
+                <h1 class="text-center mb-3 text-light">Nuestro motor principal es la excelencia</h1>
+                <div class="text-lg text-light">
+                    <p>Somos una empresa chilena especializada exclusivamente en la importación y
+                        comercialización
+                        para la industria del plástico reforzado con fibra de vidrio (F.R.P)
 
-    <div class="page-banner overlay-dark bg-image"
-        style="background-image: url(https://www.arteplastica.cl/wp-content/uploads/2022/01/footerBackground.png);">
-        <div class="banner-section">
-            <div class="container text-center wow fadeInUp">
-                <h1 class="text-danger display-2"><strong>Quienes somos</strong></h1>
-            </div> <!-- .container -->
-        </div> <!-- .banner-section -->
-    </div> <!-- .page-banner -->
-    <div class="page-section">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 wow fadeInUp">
-                    <h1 class="text-center mb-3 text-light">Nuestro motor principal es la excelencia</h1>
-                    <div class="text-lg text-light">
-                        <p>Somos una empresa chilena especializada exclusivamente en la importación y
-                            comercialización
-                            para la industria del plástico reforzado con fibra de vidrio (F.R.P)
+                        Nuestro motor principal es la excelencia, de manera que nuestros clientes puedan sentir
+                        confianza y seguridad de realizar sus proyectos, obteniendo así los mejores resultados.
 
-                            Nuestro motor principal es la excelencia, de manera que nuestros clientes puedan sentir
-                            confianza y seguridad de realizar sus proyectos, obteniendo así los mejores resultados.
+                        Con cobertura a nivel nacional, entregamos nuestros servicios a Santiago y regiones.
+                    </p>
+                    <p>En Arteplástica nos preocupamos por las pequeñas y medianas empresas de nuestro país, por
+                        lo
+                        que además de ofrecer nuestros productos de calidad, ofrecemos ensayos en laboratorio,
+                        asesorías técnicas, tanto para grupos abiertos como para grupos cerrados, además cursos
+                        para
+                        certificación de obras.
 
-                            Con cobertura a nivel nacional, entregamos nuestros servicios a Santiago y regiones.
-                        </p>
-                        <p>En Arteplástica nos preocupamos por las pequeñas y medianas empresas de nuestro país, por
-                            lo
-                            que además de ofrecer nuestros productos de calidad, ofrecemos ensayos en laboratorio,
-                            asesorías técnicas, tanto para grupos abiertos como para grupos cerrados, además cursos
-                            para
-                            certificación de obras.
-
-                            Apoyamos a nuestros clientes en el desarrollo de nuevos productos y aplicaciones en
-                            general.
-                        </p>
-                    </div>
+                        Apoyamos a nuestros clientes en el desarrollo de nuevos productos y aplicaciones en
+                        general.
+                    </p>
                 </div>
-                <div class="col-lg-8 mt-6">
-                    <h1 class="text-center mb-5 wow fadeInUp text-light">Socios y distribuidores de</h1>
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-md-5 ">
-                            <div class="card-transparent">
-                                <div class="bg-image">
-                                    <img src="{% static 'app/img/BASF-Logo_bw.svg-1024x512.png' %}" class="w-100" />
+            </div>
+            <div class="col-lg-8 mt-6">
+                <h1 class="text-center mb-5 wow fadeInUp text-light">Socios y distribuidores de</h1>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-5 ">
+                        <div class="card-transparent">
+                            <div class="bg-image">
+                                <img src="{% static 'app/img/BASF-Logo_bw.svg-1024x512.png' %}" class="w-100" />
 
 
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5">
-                            <div class="card-transparent">
-                                <div class="bg-image">
-                                    <img src="{% static 'app/img/almaco.png' %}" class="w-90" />
-
-
-                                </div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="col-md-5">
+                        <div class="card-transparent">
+                            <div class="bg-image">
+                                <img src="{% static 'app/img/almaco.png' %}" class="w-90" />
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
-
-    <!-- contenido -->
-
 </div>
+
+<!-- contenido -->
+
+
 
 
 {% endblock %}

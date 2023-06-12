@@ -1,0 +1,98 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+{% block titulo %}
+Cargas
+{% endblock titulo %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/aprender/styles.css' %} ">
+<script type="text/javascript" src="{% static 'app/js/aprender/scripts.js' %}"></script>
+{% endblock %}
+{% block contenido %}
+
+
+
+<div class="page-header page-header-dark bg-img-cover py-15"
+    style='background-image: url("{% static "app/img/aprender/cargas_1.jpg" %}")'>
+    <div class="my-15 py-lg-10"></div>
+    <div class="svg-border-rounded text-light">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+            fill="currentColor">
+            <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+        </svg>
+    </div>
+</div>
+<section class="bg-light py-10">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1>Cargas para resina</h1>
+                <p class="lead">Pueden ser: Reforzantes, no reforzantes e ignifugas.</p>
+                <hr />
+                <p>Las cargas para la resina son variadas, pues pasan por distintos tipos de posibles elementos
+                    minerales que se pueden utilizar para poder darle una mayor espesor, reduciendo así el consumo de
+                    resina de poliéster utilizada junto a otorgarle distintos tipos de características dependiendo las
+                    cargas que se añaden a la resina.</p>
+                <p class="mb-0">Cabe destacar que las cargas también generan efectos negativos a las obras realizadas
+                    por lo que se debe tener como consideración al trabajar con ellas.</p>
+            </div>
+            <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                    src="{% static 'app/img/aprender/cargas_3.jpg' %}" /></div>
+            <div class="col-lg-8">
+
+                <h4>Las cargas deben conservarse y utilizarse secas, por ello es conveniente secar estos polvos al sol y
+                    guardarlos bien almacenados en bolsas herméticas, en lugar seco y bien rotuladas.</h4>
+                <p>Además de una cierta reducción de costos, son:</p>
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Aumento de
+                        resistencia.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Menos
+                        peligro de grietas.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Mejor
+                        aspecto y terminación de las superficies.</li>
+                    <li><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Disminución de la
+                        contracción de la resina que puede ser, en ciertas condiciones minimizada.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-10">
+                <div class="card-columns card-columns-case-study mb-5">
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/productos/calcio.png' %}" /></div>
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/productos/Dioxido-de-Titanio.png' %}" /></div>
+                    <div class="card"><img class="img-fluid rounded-lg"
+                            src="{% static 'app/img/productos/Talco.png' %}" /></div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card bg-primary-soft text-primary text-center mb-5">
+                    <div class="card-body">
+                        <p class="card-text lead">"Su principal función es espesar la resina, darle dureza y
+                            resistencia."</p>
+                    </div>
+                </div>
+                <h4>Siempre será conveniente la realización de algunos ensayos previos en las condiciones reales de la
+                    aplicación, antes de pasar a la fabricación definitiva gran cantidad de piezas.</h4>
+                <p>Desventajas de las cargas:</p>
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-minus"
+                            style="color: #e00b0b;"></i> Aumenta el peso de nuestra pieza.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-minus"
+                            style="color: #e00b0b;"></i> Se pierde la transparencia.</li>
+                    <li class="mb-3"><span class="fa-li"></span><i class="fa-solid fa-minus"
+                            style="color: #e00b0b;"></i> Disminuye la resitencia y se torna quebradiza la pieza cargada.
+                    </li>
+                    <li><span class="fa-li"></span><i class="fa-solid fa-minus" style="color: #e00b0b;"></i> Al ser más
+                        dura la pieza tendrá menor resitencia a los golpes por su menor flexibilidad, rompiéndose con
+                        más facilidad.</li>
+                </ul>
+                <hr class="my-5" />
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

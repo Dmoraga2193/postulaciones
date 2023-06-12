@@ -1,0 +1,90 @@
+{% extends 'app/base.html' %}
+
+
+{% load static %}
+{% block titulo %}
+Gel Coat
+{% endblock titulo %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/css/aprender/styles.css' %} ">
+<script type="text/javascript" src="{% static 'app/js/aprender/scripts.js' %}"></script>
+{% endblock %}
+{% block contenido %}
+
+
+
+<div class="page-header page-header-dark bg-img-cover py-15"
+    style='background-image: url("{% static "app/img/aprender/gelcoat_1.jpg" %}")'>
+    <div class="my-15 py-lg-10"></div>
+    <div class="svg-border-rounded text-light">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+            fill="currentColor">
+            <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+        </svg>
+    </div>
+</div>
+<section class="bg-light py-10">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1>El Gel Coat</h1>
+                <p class="lead">Elegir el correcto es fundamental para obtener un buen acabado en cualquier pieza
+                    fabricada en material compuesto.</p>
+                <hr />
+                <p>Es un material que se utiliza para dar un acabado de alta calidad a la superficie de un material
+                    compuesto de fibra reforzada y para otorgar durabilidad a los productos. La base del gel coat suele
+                    ser resina epóxica o poliéster instaurado.</p>
+                <p class="mb-0">Usualmente se usan pigmentos con el gelcoat, confiriendo acabados de superficies lisas,
+                    brillantes y coloridas que incrementan la apariencia estética del elaborado, como sucede en las
+                    superficies sólidas e imitaciones poliméricas de granito o mármol.</p>
+            </div>
+
+            <div class="col-lg-10 "><img class="img-fluid rounded-lg shadow my-5"
+                    src="{% static 'app/img/aprender/gelcoat_2.jpg' %}" /></div>
+            <div class="col-lg-8">
+
+                <div class="card bg-primary-soft text-primary text-center mb-5">
+                    <div class="card-body">
+                        <p class="card-text lead">"En inglés está compuesto por gel y coat, que da cuenta de su
+                            apariencia de gel y su uso como recubrimiento"</p>
+                    </div>
+                </div>
+
+                <h4>En Arte Plastica disponemos de 4 tipo de Gel Coat a la venta.</h4>
+                <p>Tipos de gelcoats y sus características: </p>
+                <ul class="fa-ul">
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>Gelcoat
+                        Vinilester: Es la primera capa de resina que se aplica al molde preparado, constituye el acabado
+                        de una de las superficies del laminado, proporcionándole protección contra productos químicos,
+                        la intemperie, la humedad o cualquier agresión del entorno.</li><img
+                        class="img-fluid rounded-lg" src="{% static 'app/img/productos/Gel-Coat-Vinilester.png' %}" />
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>GelCoat
+                        Ortoftalico: Está indicado para piezas de interior, donde no sea exigible resistencia a la
+                        intemperie o que van a ser post pintadas. Baja/media retención de brillo, poca dureza
+                        superficial y al rayado.</li><img class="img-fluid rounded-lg"
+                        src="{% static 'app/img/productos/Gel-coat-Ortoftalico.png' %}" />
+
+                    <li class="mb-3"><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>GelCoat
+                        Isoftalico: Recomendados para piezas de exterior por su resistencia a la intemperie. Buen grado
+                        de brillo, retención y resistencia al rayado. Apto para fabricar platos de ducha, piezas que
+                        están a la intemperie, barcos de gama eslora pequeña. </li><img class="img-fluid rounded-lg"
+                        src="{% static 'app/img/productos/Gel-Coat-Isoftalico.png' %}" />
+
+                    <li><span class="fa-li"></span><i class="fas fa-check mr-2 text-green"></i>GelCoat Epoxico: A
+                        diferencia de los de poliéster o viniléster, no presentan disolventes, por lo
+                        que no presentan apenas contracción volumétrica (1%). Esta característica permite apliciar
+                        espesores superiores a los primeros. </li><img class="img-fluid rounded-lg"
+                        src="{% static 'app/img/productos/Gel-coat-Epoxico.png' %}" />
+
+                </ul>
+            </div>
+
+
+            <hr class="my-5" />
+
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

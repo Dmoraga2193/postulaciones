@@ -1,7 +1,14 @@
-@font-face {
-  font-family: 'Blair ITC Std';
-  src: url('/static/app/css/Blair-ITC-Std.otf') format('opentype');
+/* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reseting */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
+
 
 .navbar-brand {
   margin-left: 20rem;
@@ -278,7 +285,7 @@ a:hover {
 }
 
 footer {
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .red-separator-2 {

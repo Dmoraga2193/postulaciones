@@ -2,304 +2,281 @@
 
 
 {% load static %}
+
 {% block titulo %}
 Inicio
 {% endblock titulo %}
+{% block linkactivo_inicio %}id="inicio"{% endblock linkactivo_inicio %}
 
 {% block contenido %}
 
-<!--------------------------------------------------------------------
----------------------------HEADER-----------------------------------
--------------------------------------------------------------------->
-<div class="container-fluid">
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
-        <!-- Brand Logo -->
-        <img id="logo" class="logo navbar-brand" src="{% static 'app/img/logo.png' %}" alt=""></a>
-
-        <!-- Button for Collapsible Navbar -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item mr-3">
-                    <a class="nav-link" id="inicio" href="{% url 'home' %}">INICIO</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'empresa' %}">EMPRESA</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'postulacion' %}"">POSTULAR</a>
-                </li>                
-        <li class=" nav-item dropdown">
-                        <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">PRODUCTOS <i
-                                class="fas fa-caret-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'categoria' 'AC' %}" class="dropdown-item nav-link">Acelerantes</a></li>
-                            <li><a href="{% url 'categoria' 'AD' %}" class="dropdown-item nav-link">Aditivos</a></li>
-                            <li><a href="{% url 'categoria' 'CT' %}" class="dropdown-item nav-link">Catalizadores</a>
-                            </li>
-                            <li><a href="{% url 'categoria' 'CA' %}" class="dropdown-item nav-link">Cargas</a></li>
-                            <li><a href="{% url 'categoria' 'EP' %}" class="dropdown-item nav-link">Epóxicos</a></li>
-                            <li><a href="{% url 'categoria' 'FV' %}" class="dropdown-item nav-link">Fibras de vidrio</a>
-                            </li>
-                            <li><a href="{% url 'categoria' 'GC' %}" class="dropdown-item nav-link">Gel Coat</a></li>
-                            <li><a href="{% url 'categoria' 'PO' %}" class="dropdown-item nav-link">Poliuretano</a></li>
-                            <li><a href="{% url 'categoria' 'RE' %}" class="dropdown-item nav-link">Resinas</a></li>
-                            <li><a href="{% url 'categoria' 'SV' %}" class="dropdown-item nav-link">Solventes</a></li>
-                        </ul>
-                </li>
-
-                {% if perms.app.view_postulacion %}
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="{% url 'listar_postulaciones' %}">LISTAR POSTULACIONES</a>
-                </li>
-                {% endif %}
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle" id="profileDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Bienvenido @{{ user.username }} <i
-                            class="fas fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'perfil' %}" class="dropdown-item nav-link">Perfil</a></li>
-                        <li><a href="" class="dropdown-item nav-link">Ordenes</a></li>
-                        <li><a href="{% url 'passwordchange' %}" class="dropdown-item nav-link">Cambiar contraseña</a>
-                        </li>
-                        <li><a href="{% url 'logout' %}" class="dropdown-item nav-link">Cerrar sesión</a></li>
-                    </ul>
-                </li>
-                {% else %}
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'login' %}">INICIAR SESIÓN</a>
-                </li>
-                {% endif %}
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="{% url 'showcart' %}">Carrito</a>
-                </li>
-                <li class=" nav-item mr-3">
-                    <a class="nav-link" href="">Whishlist 4</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
 
 <!-- contenido -->
 
-<!--Carousel-->
-<div class="col-md">
-    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static 'app/img/1-carousel.png' %}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>PISCINAS</h5>
-                    <p>Estructuralmente reforzadas con una mezcla de resina de poliéster y fibra de vidrio de
-                        alta resistencia. Esta mezcla garantiza impermeabilidad y durabilidad mayor a 50 años.
-                        Siendo así las más resistentes dentro del mercado.</p>
-                </div>
-            </div>
-            <div class="carousel-item ">
-                <img src="{% static 'app/img/2-carousel.png' %}" class="d-block w-100" alt="..."></a>
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>TRANSPORTE</h5>
-                    <p>Incorporándose a las nuevas tecnologías de fabricación dentro del mercado automotriz.
-                        Reforzamos y creamos piezas exclusivamente en fibra de vidrio debido a su alta
-                        resistencia a la tracción proporcionando una mejor funcionalidad del vehículo.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'app/img/3-carousel.png' %}" class="d-block w-100" alt="..."></a>
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>MINERÍA</h5>
-                    <p>Contamos con una alta gama de productos a base de fibra de vidrio, resinas y poliéster
-                        para así enfocarnos en toda la industria de la minería. Asesoramos, fabricamos y
-                        solucionamos. Mejorando así la calidad y productividad dentro de este rubro.</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+<!-- Full Page Image Header Area -->
+<div id="top" class="header">
+</div>
+<!-- /Full Page Image Header Area -->
+
+<div class="calloutzero">
+    <div class="vert-text text-dark">
+        <h1>Orientamos en las siguientes áreas</h1>
     </div>
 </div>
 
+<!-- Callout -->
+<div class="calloutone">
+    <div class="vert-text">
+        <h1>Piscinas</h1>
+        <p><span style="font-weight: 400;">Estructuralmente reforzadas con una mezcla de resina de poliéster y
+                fibra de vidrio de alta resistencia. Esta
+                mezcla garantiza </span><b>impermeabilidad</b><span style="font-weight: 400;">y <b>durabilidad</b> mayor
+                a 50 años. Siendo así las más
+                resistentes dentro del mercado.</span></p>
+    </div>
+</div>
+
+<div class="callouttwo">
+    <div class="vert-text">
+        <h1>Transporte</h1>
+        <p><span style="font-weight: 400;">Incorporándose a las </span><b>nuevas tecnologías</b><span
+                style="font-weight: 400;"> de fabricación dentro del mercado automotriz. Reforzamos y creamos piezas
+                exclusivamente en fibra de vidrio debido a su alta resistencia a la </span><b>tracción</b><span
+                style="font-weight: 400;"> proporcionando una mejor funcionalidad del vehículo.</span></p>
+    </div>
+</div>
+
+<div class="calloutthree">
+    <div class="vert-text">
+        <h1>Mineria</h1>
+        <p><span style="font-weight: 400;">Incorporándose a las </span><b>nuevas tecnologías</b><span
+                style="font-weight: 400;"> de fabricación dentro del mercado automotriz. Reforzamos y creamos piezas
+                exclusivamente en fibra de vidrio debido a su alta resistencia a la </span><b>tracción</b><span
+                style="font-weight: 400;"> proporcionando una mejor funcionalidad del vehículo.</span></p>
+    </div>
+</div>
+
+<div class="calloutfour">
+    <div class="vert-text">
+        <h1>Aeronáutica</h1>
+        <p><span style="font-weight: 400;">Restauración y creación de piezas a base de </span><b>poliéster</b><span
+                style="font-weight: 400;"> y </span><b>fibra de vidrio.</b><span style="font-weight: 400;"> Cuyo peso es
+                menor a los materiales convencionales, anticorrosivo y más eficaz en cuanto a resistencia y
+                calidad.</span></p>
+    </div>
+</div>
+
+<div class="calloutfive">
+    <div class="vert-text">
+        <h1>Química</h1>
+        <p><span style="font-weight: 400;">Entregamos las mejores soluciones en la fabricación de herramientas para
+                laboratorios, nuestros materiales proporcionan estabilidad. Ya que la fibra de vidrio es un aislante
+                térmico, eléctrico y anticorrosivo, de suma ligereza.</span></p>
+    </div>
+</div>
+
+<div class="calloutsix">
+    <div class="vert-text">
+        <h1>Mineria</h1>
+        <p><span style="font-weight: 400;">Incorporándose a las </span><b>nuevas tecnologías</b><span
+                style="font-weight: 400;"> de fabricación dentro del mercado automotriz. Reforzamos y creamos piezas
+                exclusivamente en fibra de vidrio debido a su alta resistencia a la </span><b>tracción</b><span
+                style="font-weight: 400;"> proporcionando una mejor funcionalidad del vehículo.</span></p>
+    </div>
+</div>
+
+<div class="calloutseven">
+    <div class="vert-text">
+        <h1>Construcción
+        </h1>
+        <p><span style="font-weight: 400;">Ofrecemos una innovadora solución en la prevención y reparación de grietas,
+                fisuras y en el armado de los revoques. Sus propiedades inalterables permiten que sean aplicadas también
+                como refuerzo en los </span><b>pisos, micropisos y alisados cementicios,</b><span
+                style="font-weight: 400;">sistemas de </span><b>aislación térmica.</b></p>
+    </div>
+</div>
+
+<div class="calloutzero">
+    <div class="vert-text text-dark">
+        <h2>Productos con múltiples aplicaciones para distintos rubros </h2>
+    </div>
+</div>
+<!-- /Callout -->
+
+
 <section style="background-image: url({% static 'app/img/fondo-min-1.png' %});">
     <div class="text-center container py-5">
-        <h4 class="mt-4 mb-5"><strong>Productos Destacados</strong></h4>
+        <h1 class="mt-4 mb-5"><strong>Productos Destacados</strong></h4>
 
-        <div class="row">
-            <div class="col-lg-4 col-md-12 mb-4">
-                <div class="card-transparent">
-                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                        data-mdb-ripple-color="light">
-                        <img src="{% static 'app/img/img1.png' %}" class="w-100" />
-                        <div class="mask">
-                            <div class="d-flex justify-content-start align-items-end h-100">
-                                <h5><a class="badge bg-primary ms-2" href="{% url 'categoria' 'RE' %}">Resinas</a></h5>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card-transparent">
+                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                            data-mdb-ripple-color="light">
+                            <img src="{% static 'app/img/img1.png' %}" class="w-100" />
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><a class="badge bg-primary ms-2" href="{% url 'categoria' 'RE' %}">Resinas</a>
+                                    </h5>
+                                </div>
                             </div>
-                        </div>
-                        <div class="hover-overlay">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
 
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Palatal P4</h5>
+                            <h6 class="text-muted">
+                                <p>Resina</p>
+                            </h6>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Palatal P4</h5>
-                        <h6 class="text-muted">
-                            <p>Resina</p>
-                        </h6>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-transparent">
+                        <div class="bg-image hover-zoom">
+                            <img src="{% static 'app/img/img2.png' %}" class="w-100" />
+
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><a class="badge bg-success ms-2"
+                                            href="{% url 'categoria' 'CT' %}">Catalizadores</a>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Catalizador Benzoilo</h5>
+                            <h6 class="text-muted">
+                                <p>Catalizador</p>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-transparent">
+                        <div class="bg-image hover-zoom">
+                            <img src="{% static 'app/img/img3.png' %}" class="w-100" />
+
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><a class="badge bg-danger ms-2" href="{% url 'categoria' 'FV' %}">Fibra de
+                                            vidrio</a></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Velo de Vidrio</h5>
+                            <h6 class="text-muted">
+                                <p>Fibra de vidrio</p>
+                            </h6>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card-transparent">
-                    <div class="bg-image">
-                        <img src="{% static 'app/img/img2.png' %}" class="w-100" />
-
-                        <div class="mask">
-                            <div class="d-flex justify-content-start align-items-end h-100">
-                                <h5><a class="badge bg-success ms-2" href="{% url 'categoria' 'CT' %}">Catalizadores</a>
-                                </h5>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card-transparent">
+                        <div class="bg-image">
+                            <img src="{% static 'app/img/img4.png' %}" class="w-100" />
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><a class="badge bg-danger ms-2" href="{% url 'categoria' 'FV' %}">Fibra de
+                                            vidrio</a></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </div>
                         </div>
-                        <div class="hover-overlay">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Tela de Vidrio</h5>
+                            <h6 class="text-muted">
+                                <p>Fibra de vidrio</p>
+                            </h6>
                         </div>
-
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Catalizador Benzoilo</h5>
-                        <h6 class="text-muted">
-                            <p>Catalizador</p>
-                        </h6>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card-transparent">
-                    <div class="bg-image">
-                        <img src="{% static 'app/img/img3.png' %}" class="w-100" />
-
-                        <div class="mask">
-                            <div class="d-flex justify-content-start align-items-end h-100">
-                                <h5><a class="badge bg-danger ms-2" href="{% url 'categoria' 'FV' %}">Fibra de
-                                        vidrio</a></h5>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-transparent">
+                        <div class="bg-image">
+                            <img src="{% static 'app/img/img5.png' %}" class="w-100" />
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><a class="badge bg-danger ms-2" href="{% url 'categoria' 'FV' %}">Fibra de
+                                            vidrio</a></h5>
+                                </div>
                             </div>
-                        </div>
-                        <div class="hover-overlay">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </div>
-
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Velo de Vidrio</h5>
-                        <h6 class="text-muted">
-                            <p>Fibra de vidrio</p>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-4 col-md-12 mb-4">
-                <div class="card-transparent">
-                    <div class="bg-image">
-                        <img src="{% static 'app/img/img4.png' %}" class="w-100" />
-                        <div class="mask">
-                            <div class="d-flex justify-content-start align-items-end h-100">
-                                <h5><a class="badge bg-danger ms-2" href="{% url 'categoria' 'FV' %}">Fibra de
-                                        vidrio</a></h5>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </div>
+
                         </div>
-                        <div class="hover-overlay">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Roving continuo</h5>
+                            <h6 class="text-muted">
+                                <p>Fibra de vidrio</p>
+                            </h6>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Tela de Vidrio</h5>
-                        <h6 class="text-muted">
-                            <p>Fibra de vidrio</p>
-                        </h6>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card-transparent">
-                    <div class="bg-image">
-                        <img src="{% static 'app/img/img5.png' %}" class="w-100" />
-                        <div class="mask">
-                            <div class="d-flex justify-content-start align-items-end h-100">
-                                <h5><a class="badge bg-danger ms-2" href="{% url 'categoria' 'FV' %}">Fibra de
-                                        vidrio</a></h5>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-transparent">
+                        <div class="bg-image">
+                            <img src="{% static 'app/img/img6.png' %}" class="w-100" />
+
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><a class="badge bg-danger ms-2" href="{% url 'categoria' 'FV' %}">Fibra de
+                                            vidrio</a></h5>
+                                </div>
                             </div>
-                        </div>
-                        <div class="hover-overlay">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </div>
-
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Roving continuo</h5>
-                        <h6 class="text-muted">
-                            <p>Fibra de vidrio</p>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card-transparent">
-                    <div class="bg-image">
-                        <img src="{% static 'app/img/img6.png' %}" class="w-100" />
-
-                        <div class="mask">
-                            <div class="d-flex justify-content-start align-items-end h-100">
-                                <h5><a class="badge bg-danger ms-2" href="{% url 'categoria' 'FV' %}">Fibra de
-                                        vidrio</a></h5>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </div>
-                        </div>
-                        <div class="hover-overlay">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </div>
 
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Velo de Vidrio</h5>
-                        <h6 class="text-muted">
-                            <p>Fibra de vidrio</p>
-                        </h6>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Velo de Vidrio</h5>
+                            <h6 class="text-muted">
+                                <p>Fibra de vidrio</p>
+                            </h6>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
-
-
-        </div>
+    </div>
+    <div class="text-center container py-5">
+        <h1 class="mt-4 mb-5"><strong>Te invitamos a conocer nuestra casa matriz !</strong></h1>
     </div>
 </section>
+<!-- Map -->
+
+<div id="contact" class="map">
+    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.6536647564385!2d-70.6352459879438!3d-33.458328597806094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c565efabe67f%3A0xd9742db52fbefd30!2sAv.%20Portugal%201230%2C%208360012%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1686548299696!5m2!1ses-419!2scl"></iframe>
+    <br />
+    </iframe>
+</div>
+
+<!-- /Map -->
 
 <!-- contenido -->
 
