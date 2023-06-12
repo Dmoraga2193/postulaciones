@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "django_filters",
     "fontawesomefree",
-    "razorpay",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
@@ -156,8 +155,7 @@ PHONENUMBER_DEFAULT_REGION = 'CL'
 PHONENUMBER_DB_FORMAT = 'NATIONAL'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-RAZOR_KEY_ID = "rzp_test_OACxHNwOxR0d2n"
-RAZOR_KEY_SECRET = "25osiGupCry1o9tNm0dbt2Nk"
+
 
 
 

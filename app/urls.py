@@ -16,6 +16,7 @@ urlpatterns = [
     path('resina-epoxica/',views.resina_epoxica,name='resina_epoxica'),
     path('fibra-de-vidrio/',views.fibra_vidrio,name='fibra_vidrio'),
     path('gel-coat/',views.gel_coat,name='gel_coat'),
+    path('poliuretano/',views.poliuretano,name='poliuretano'),
 
     path('direccion/',views.direccion,name='direccion'),
     path('actualizarDireccion/<int:pk>',views.actualizarDireccion.as_view(),name='actualizarDireccion'),

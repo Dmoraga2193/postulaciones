@@ -19,16 +19,17 @@ from django.db.models import Count
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-import razorpay
 
 
-# Create your views here.
+# Vistas basicas
 
 def home(request):    
     return render(request, 'app/home.html')
 
 def empresa(request): 
     return render(request, 'app/empresa.html')
+
+# Vista de postulacion
 
 def postulacion(request):
     data = {
@@ -45,6 +46,8 @@ def postulacion(request):
             data["form"] = formulario  
     return render(request, 'app/postulacion.html',data)
 
+# Vistas de aprender 
+
 def cargas(request):
     return render(request, 'app/aprender/cargas.html')
 
@@ -56,6 +59,11 @@ def fibra_vidrio(request):
 
 def gel_coat(request):
     return render(request, 'app/aprender/gelcoat.html')
+
+def poliuretano(request):
+    return render(request, 'app/aprender/poliuretano.html')
+
+# Vistas de postulaciones
 
 @permission_required('app.view_postulacion')
 def listar_postulaciones(request):    
@@ -103,6 +111,7 @@ def eliminar_postulacion(request, id):
     messages.success(request,'Postulacion Eliminada Correctamente')
     return redirect(to="listar_postulaciones")
 
+# Vistas de Login
 def registro(request):
 
     data = {
@@ -120,20 +129,6 @@ def registro(request):
         data["form"] = formulario
     return render(request, 'registration/registro.html',data)
 
-
-class VistaCategoria(View):
-    def get(self,request,val):
-        
-        producto = Producto.objects.filter(categoria=val)
-        nombre = Producto.objects.filter(categoria=val)
-        return render(request,'app/categoria.html',locals())  
-
-    
-class ProductoDetalle(View):
-    def get(self,request,pk):
-        producto = Producto.objects.get(pk=pk)
-        return render(request,'app/productodetalle.html',locals())
-    
 class VistaPerfil(View):
     def get(self,request):
         form = PerfilClienteForm()
@@ -156,7 +151,7 @@ class VistaPerfil(View):
         else:
             messages.success(request, "Ocurrio un problema! Revisa nuevamente los datos ingresados.")
         return render(request, 'app/perfil.html', locals())
-
+    
 def direccion(request):
     add = Cliente.objects.filter(usuario=request.user)
     return render(request, 'app/direccion.html',locals())
@@ -181,8 +176,8 @@ class actualizarDireccion(View):
             messages.success(request, "Perfil guardado correctamente.")
         else:
             messages.success(request, "Ocurrio un problema! Revisa nuevamente los datos ingresados.")
-        return redirect("direccion")    
-
+        return redirect("direccion")  
+    
 def password_reset_request(request):
     if request.method == 'POST':
         password_form = PasswordResetForm(request.POST)
@@ -213,6 +208,28 @@ def password_reset_request(request):
         'password_form':password_form
     }
     return render(request, 'app/password_reset.html', context)
+
+# Vista de productos 
+
+class VistaCategoria(View):
+    def get(self,request,val):
+        
+        producto = Producto.objects.filter(categoria=val)
+        nombre = Producto.objects.filter(categoria=val)
+        return render(request,'app/categoria.html',locals())  
+
+class ProductoDetalle(View):
+    def get(self,request,pk):
+        producto = Producto.objects.get(pk=pk)
+        return render(request,'app/productodetalle.html',locals())   
+
+    
+
+
+
+
+  
+
 
 
 
