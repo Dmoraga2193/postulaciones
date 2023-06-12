@@ -119,21 +119,18 @@ Categoria
                                 <span>{{producto.descripcion}}</span>
                                 <hr class="m-0 pt-2 mt-2">
                             </div>
-                            <div class="col-lg-12">
-                                <h6>Cantidad :</h6>
-                                <input type="number" class="form-control text-center w-100" value="1">
-                            </div>
+
                             <div class="col-lg-12 mt-3">
                                 <div class="row">
                                     <div class="col-lg-6 pb-2">
                                         <form action="/add-to-cart" class="d-inline">
                                             {% csrf_token %}
                                             <input type="hidden" name="prod_id" value={{producto.id}} />
-                                            <button type="submit" class="btn btn-danger w-100">Añadir al carro</button>
+                                            <button type="submit" class="btn btn-success w-100">Añadir al carro</button>
                                         </form>
                                     </div>
                                     <div class="col-lg-6">
-                                        <a href="{% url 'showcart' %}" class="btn btn-success w-100">Comprar ahora</a>
+                                        <a href="{% url 'home' %}" class="btn btn-danger w-100">Volver</a>
                                     </div>
                                 </div>
                             </div>

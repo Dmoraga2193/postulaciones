@@ -13,11 +13,13 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator
 from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
 from django.db.models.query_utils import Q
 from django.db.models import Count
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+import razorpay
 
 
 # Create your views here.
@@ -228,8 +230,42 @@ class checkout(View):
         for p in cart_items:
             value = p.quantity * p.producto.precio
             amount = amount + value
-        totalamount = amount
+        totalamount = amount * 100
+        razoramount = int(totalamount)
+        cliente = razorpay.Client(auth=(settings.RAZOR_KEY_ID,settings.RAZOR_KEY_SECRET))
+        data = {"amount":razoramount, "currency": "INR","receipt":"order_rcptid_11"}
+        payment_response = cliente.order.create(data=data)
+        print(payment_response)
+        #{'id': 'order_M0occXNT76FBxJ', 'entity': 'order', 'amount': 3198000, 'amount_paid': 0, 'amount_due': 3198000, 'currency': 'INR', 'receipt': 'order_rcptid_11', 'offer_id': None, 'status': 'created', 'attempts': 0, 'notes': [], 'created_at': 1686528578}
+        order_id = payment_response['id']
+        order_status = payment_response['status']
+        if order_status == 'created':
+            payment = Payment(
+                usuario = usuario,
+                cantidad = totalamount,
+                razorpay_order_id=order_id,
+                razorpay_payment_status=order_status
+            )
+            payment.save()
         return render(request, 'app/checkout.html', locals())
+
+def payment_done(request):
+    order_id=request.GET.get('order_id')
+    payment_id=request.GET.get('payment_id')
+    cust_id=request.GET.get('cust_id')
+    usuario=request.user
+    cliente=Cliente.objects.get(id=cust_id)
+    payment=Payment.objects.get(razorpay_order_id=order_id)
+    payment.paid=True
+    payment.razorpay_payment_id = payment_id
+    payment.save()
+    #para guardar los detalles de la orden
+    cart=Cart.objects.filter(usuario=usuario)
+    for c in cart:
+        OrderPlaced(usuario=usuario,cliente=cliente,producto=c.producto,quantity=c.quantity,payment=payment).save()
+        c.delete()
+    
+    return redirect("orders")
 
 def plus_cart(request):
     if request.method == 'GET':
@@ -243,7 +279,7 @@ def plus_cart(request):
         for p in cart:
             value = p.quantity * p.producto.precio
             amount = amount + value
-        totalamount = amount        
+        totalamount = amount      
         data={
             'quantity':c.quantity,
             'amount':amount,
