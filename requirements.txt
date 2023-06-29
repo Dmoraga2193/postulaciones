@@ -9,4 +9,3 @@ django-filter
 django-phonenumbers
 whitenoise
 fontawesomefree == 6.4.0
-razorpay

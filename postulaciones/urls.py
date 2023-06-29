@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
 ]
 
+
 urlpatterns +=staticfiles_urlpatterns()
 
 if settings.DEBUG:

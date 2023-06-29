@@ -222,14 +222,3 @@ class ProductoDetalle(View):
     def get(self,request,pk):
         producto = Producto.objects.get(pk=pk)
         return render(request,'app/productodetalle.html',locals())   
-
-    
-
-
-
-
-  
-
-
-
-

@@ -3,7 +3,7 @@ from . import views
 from django.contrib.auth import views as auth_view
 from .forms import CambiarContraseñaForm
 
-urlpatterns = [
+urlpatterns = [    
     path('', views.home, name='home'),
     path('postulacion/', views.postulacion, name='postulacion'),
     path('listar-postulaciones/', views.listar_postulaciones,name='listar_postulaciones'),
