@@ -112,6 +112,7 @@ def eliminar_postulacion(request, id):
     return redirect(to="listar_postulaciones")
 
 # Vistas de Login
+@staff_member_required
 def registro(request):
 
     data = {

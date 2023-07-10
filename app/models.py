@@ -111,7 +111,6 @@ class Producto(models.Model):
      nombre = models.CharField(max_length=100)
      categoria = models.CharField(choices=opciones_categoria, max_length=2)
      descripcion = models.TextField()
-     precio = models.FloatField()
      imagen_producto = models.ImageField(upload_to='productos')
 
      def __str__(self):

@@ -11,7 +11,7 @@ class PostulacionAdmin(admin.ModelAdmin):
 
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ('nombre','categoria','precio')
+    list_display = ('nombre','categoria')
     list_per_page = 10
 
 @admin.register(Cliente)
